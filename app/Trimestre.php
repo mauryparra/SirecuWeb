@@ -26,4 +26,12 @@ class Trimestre extends Model
      * @var array
      */
     protected $fillable = ['nombre', 'fecha_inicio', 'fecha_fin'];
+
+    /**
+     * Obtiene los reportes trimestrales asociados al trimestre
+     */
+    public function reportesTrimestrales()
+    {
+        return $this->hasMany('App\ReporteTrimestral', 'trimestre_id');
+    }
 }

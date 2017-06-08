@@ -26,4 +26,12 @@ class ReporteIngresoMensual extends Model
      * @var array
      */
     protected $fillable = ['ingresos_provincial', 'ingresos_otros', 'ingresos_central'];
+
+    /**
+     * Obtiene el reporte de ingresos asociado al reporte de ingresos mensual
+     */
+    public function reporteIngreso()
+    {
+        return $this->belongsTo('App\ReporteIngreso', 'reporte_ingreso_id');
+    }
 }

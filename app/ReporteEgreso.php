@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ReporteEgresos extends Model
+class ReporteEgreso extends Model
 {
     /**
      * The table associated with the model.
@@ -26,4 +26,28 @@ class ReporteEgresos extends Model
      * @var array
      */
     protected $fillable = ['total'];
+
+    /**
+     * Obtiene el reporte trimestral asociado al reporte de egresos
+     */
+    public function reporteTrimestral()
+    {
+        return $this->belongsTo('App\ReporteTrimestral', 'reporte_trimestral_id');
+    }
+
+    /**
+     * Obtiene la seccional asociada al reporte de egresos
+     */
+    public function seccional()
+    {
+        return $this->belongsTo('App\Seccional', 'seccional_id');
+    }
+
+    /**
+     * Obtiene los reportes de egresos por categorias asociadas al reporte de egresos
+     */
+    public function reporteEgresosCategorias()
+    {
+        return $this->hasMany('App\ReporteEgresoCategoria', 'reporte_egreso_id');
+    }
 }

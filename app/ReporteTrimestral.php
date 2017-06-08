@@ -26,4 +26,36 @@ class ReporteTrimestral extends Model
      * @var array
      */
     protected $fillable = ['saldo_inicial', 'ingresos', 'egresos', 'saldo_final'];
+
+    /**
+     * Obtiene el reporte de ingresos asociado al trimestre
+     */
+    public function ingreso()
+    {
+        return $this->hasOne('App\ReporteIngreso', 'reporte_trimestral_id');
+    }
+
+    /**
+     * Obtiene los reportes de egresos asociados al trimestre
+     */
+    public function egresos()
+    {
+        return $this->hasMany('App\ReporteEgreso', 'reporte_trimestral_id');
+    }
+
+    /**
+     * Obtiene la seccional asociada al reporte trimestral
+     */
+    public function seccional()
+    {
+        return $this->belongsTo('App\Seccional', 'seccional_id');
+    }
+
+    /**
+     * Obtiene el trimestre asociado al reporte trimestral
+     */
+    public function trimestre()
+    {
+        return $this->belongsTo('App\Trimestre', 'trimestre_id');
+    }
 }

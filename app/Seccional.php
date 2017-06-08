@@ -26,4 +26,12 @@ class Seccional extends Model
      * @var array
      */
     protected $fillable = ['nombre'];
+
+    /**
+     * Obtiene los reportes trimestrales asociados al trimestre
+     */
+    public function reportesTrimestrales()
+    {
+        return $this->hasMany('App\ReporteTrimestral', 'seccional_id');
+    }
 }

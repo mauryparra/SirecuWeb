@@ -25,5 +25,21 @@ class ReporteEgresoCategoria extends Model
      *
      * @var array
      */
-    protected $fillable = ['total'];
+    protected $fillable = ['total_mes_1', 'total_mes_2', 'total_mes_3'];
+
+    /**
+     * Obtiene el reporte de egresos asociado al reporte de egresos por categorias
+     */
+    public function reporteEgreso()
+    {
+        return $this->belongsTo('App\ReporteEgreso', 'reporte_egreso_id');
+    }
+
+    /**
+     * Obtiene la categoria de gastos asociado al reporte de egresos por categorias
+     */
+    public function categoriaGasto()
+    {
+        return $this->belongsTo('App\CategoriaGasto', 'categoria_gasto_id');
+    }
 }

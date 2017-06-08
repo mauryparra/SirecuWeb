@@ -25,5 +25,21 @@ class ReporteIngreso extends Model
      *
      * @var array
      */
-    protected $fillable = ['total_provincial', 'total_otros', 'total_central'];
+    protected $fillable = ['total_provincial', 'coparticipacion', 'total_general'];
+
+    /**
+     * Obtiene el reporte trimestral asociado al reporte de ingresos
+     */
+    public function reporteTrimestral()
+    {
+        return $this->belongsTo('App\ReporteTrimestral', 'reporte_trimestral_id');
+    }
+
+    /**
+     * Obtiene los reportes de ingresos mensuales asociados al reporte de ingresos
+     */
+    public function reportesIngresosMensuales()
+    {
+        return $this->hasMany('App\ReporteIngresoMensual', 'reporte_ingreso_id');
+    }
 }

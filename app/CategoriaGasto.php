@@ -26,4 +26,12 @@ class CategoriaGasto extends Model
      * @var array
      */
     protected $fillable = ['nombre'];
+
+    /**
+     * Obtiene los reportes de egresos por categorias asociados al a una categoria de gastos
+     */
+    public function reportesEgresosCategorias()
+    {
+        return $this->hasMany('App\ReporteEgresoCategoria', 'categoria_gasto_id');
+    }
 }
