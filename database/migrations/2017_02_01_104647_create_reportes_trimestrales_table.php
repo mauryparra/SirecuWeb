@@ -23,6 +23,10 @@ class CreateReportesTrimestralesTable extends Migration
             $table->decimal('egresos', 11, 2);
             $table->decimal('saldo_final', 11, 2);
             $table->timestamps();
+
+            $table->foreign('seccional_id')->references('id')->on('seccionales');
+            $table->foreign('trimestre_id')->references('id')->on('trimestres');
+            $table->unique(['seccional_id', 'trimestre_id', 'año']);
         });
     }
 

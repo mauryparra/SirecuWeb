@@ -17,9 +17,14 @@ class CreateReportesEgresosCategoriasTable extends Migration
             $table->increments('id');
             $table->integer('reporte_egreso_id')->unsigned();
             $table->integer('categoria_gasto_id')->unsigned();
-            $table->date('mes');
-            $table->decimal('total', 11, 2);
+            $table->decimal('total_mes_1', 11, 2);
+            $table->decimal('total_mes_2', 11, 2);
+            $table->decimal('total_mes_3', 11, 2);
             $table->timestamps();
+
+            $table->foreign('reporte_egreso_id')->references('id')->on('reportes_egresos');
+            $table->foreign('categoria_gasto_id')->references('id')->on('categorias_gastos');
+            $table->unique(['reporte_egreso_id', 'categoria_gasto_id'], 'reportes_egregos_cat_unique');
         });
     }
 

@@ -15,7 +15,7 @@ class CreateSeccionalesTable extends Migration
     {
         Schema::create('seccionales', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre');
+            $table->string('nombre')->unique();
         });
     }
 

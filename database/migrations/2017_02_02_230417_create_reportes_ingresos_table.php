@@ -17,9 +17,11 @@ class CreateReportesIngresosTable extends Migration
             $table->increments('id');
             $table->integer('reporte_trimestral_id')->unsigned();
             $table->decimal('total_provincial', 11, 2);
-            $table->decimal('total_otros', 11, 2);
-            $table->decimal('total_central', 11, 2);
+            $table->decimal('coparticipacion', 11, 2);
+            $table->decimal('total_general', 11, 2);
             $table->timestamps();
+
+            $table->foreign('reporte_trimestral_id')->references('id')->on('reportes_trimestrales');
         });
     }
 

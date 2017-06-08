@@ -15,7 +15,7 @@ class CreateCategoriasGastosTable extends Migration
     {
         Schema::create('categorias_gastos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre');
+            $table->string('nombre')->unique();
         });
     }
 
