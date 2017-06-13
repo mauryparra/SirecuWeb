@@ -20,37 +20,40 @@
 
                     <!-- Table -->
                     <div class="table-responsive">
-                        <table class="table table-hover">
-                            <thead>
+                        <table class="table table-hover table-bordered" style="text-align: center;">
+                            <thead class="text-center">
                                 <tr>
-                                    <th>#</th>
-                                    <th>First Name</th>
-                                    <th>Last Name</th>
-                                    <th>Username</th>
+                                    <th>Seccional</th>
+                                    <th>Trimestre</th>
+                                    <th>Año</th>
+                                    <th>Saldo Inicial</th>
+                                    <th>Ingresos</th>
+                                    <th>Egresos</th>
+                                    <th>Saldo Final</th>
+                                    <th>Ingresos/Gastos</th>
+                                    <th>Ingresos</th>
+                                    <th>Egresos</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>@fat</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>Larry</td>
-                                    <td>the Bird</td>
-                                    <td>@twitter</td>
-                                </tr>
+                                @foreach ($reporteT as $reporte)
+                                    <tr>
+                                        <th scope="row">{{ $reporte->seccional->nombre }}</th>
+                                        <td>{{ $reporte->trimestre->nombre }}</td>
+                                        <td>{{ $reporte->año }}</td>
+                                        <td>{{ $reporte->saldo_inicial }}</td>
+                                        <td>{{ $reporte->ingresos }}</td>
+                                        <td>{{ $reporte->egresos }}</td>
+                                        <td>{{ $reporte->saldo_final }}</td>
+                                        <td><button href="#">Ver Reporte</button></td>
+                                        <td><button href="#">Ver Reporte</button></td>
+                                        <td><button href="#">Ver Reporte</button></td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
+                    <!-- Table -->
                 </div>
             </div>
         </div>

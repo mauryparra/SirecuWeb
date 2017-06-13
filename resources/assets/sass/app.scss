@@ -1,9 +1,15 @@
-
 // Fonts
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
-
 // Variables
 @import "variables";
-
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+// App Styles
+body {
+    background-color: #1974b1;
+}
+
+caption, th {
+    text-align: center;
+}
