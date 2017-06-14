@@ -18,3 +18,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+
+Route::get('/reportes', 'ReporteTrimestralController@index')->name('reportes.index');
+Route::get('/reportes/{id}', 'ReporteTrimestralController@show')->name('reportes.show');

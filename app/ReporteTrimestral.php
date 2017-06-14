@@ -58,4 +58,9 @@ class ReporteTrimestral extends Model
     {
         return $this->belongsTo('App\Trimestre', 'trimestre_id');
     }
+
+    public function path()
+    {
+        return '/reportes/' . $this->id;
+    }
 }

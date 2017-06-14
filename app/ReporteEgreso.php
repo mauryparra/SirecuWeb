@@ -50,4 +50,9 @@ class ReporteEgreso extends Model
     {
         return $this->hasMany('App\ReporteEgresoCategoria', 'reporte_egreso_id');
     }
+
+    public function path()
+    {
+        return '/egresos/' . $this->id;
+    }
 }

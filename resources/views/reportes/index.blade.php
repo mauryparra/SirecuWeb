@@ -4,17 +4,10 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
-
-                <div class="panel-body">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut semper sollicitudin libero eget finibus. Curabitur massa leo, suscipit vel eros ac, porttitor viverra neque. Vestibulum feugiat mauris ut dignissim molestie. In cursus odio non facilisis laoreet. Morbi efficitur arcu a quam volutpat, vehicula iaculis nisl volutpat. Maecenas pellentesque faucibus eros sed vestibulum. Donec lacus dolor, vestibulum sed dictum eget, aliquet a eros.
-                </div>
-            </div>
 
             <div class="panel panel-default">
                 <!-- Default panel contents -->
-                <div class="panel-heading">Reports</div>
+                <div class="panel-heading">Reportes Trimestrales</div>
                 <div class="panel-body">
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut semper sollicitudin libero eget finibus. Curabitur massa leo, suscipit vel eros ac, porttitor viverra neque. Vestibulum feugiat mauris ut dignissim molestie.</p>
 
@@ -30,7 +23,6 @@
                                     <th>Ingresos</th>
                                     <th>Egresos</th>
                                     <th>Saldo Final</th>
-                                    <th>Ingresos/Gastos</th>
                                     <th>Ingresos</th>
                                     <th>Egresos</th>
                                 </tr>
@@ -45,7 +37,6 @@
                                         <td>{{ $reporte->ingresos }}</td>
                                         <td>{{ $reporte->egresos }}</td>
                                         <td>{{ $reporte->saldo_final }}</td>
-                                        <td><a class="btn btn-default btn-sm" href="{{ $reporte->path() }}">Ver Reporte</a></td>
                                         <td><a class="btn btn-default btn-sm" href="{{ $reporte->ingreso->path() }}">Ver Reporte</a></td>
                                         <td><a class="btn btn-default btn-sm" href="#">Ver Reporte</a></td>
                                     </tr>

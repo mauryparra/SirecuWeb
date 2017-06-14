@@ -42,4 +42,9 @@ class ReporteIngreso extends Model
     {
         return $this->hasMany('App\ReporteIngresoMensual', 'reporte_ingreso_id');
     }
+
+    public function path()
+    {
+        return '/ingresos/' . $this->id;
+    }
 }

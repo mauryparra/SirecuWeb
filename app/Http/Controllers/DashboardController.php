@@ -24,7 +24,6 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $reportesTrimestrales = new ReporteTrimestral();
-        return view('dashboard', ['reporteT' => $reportesTrimestrales->all()]);
+        return view('dashboard', ['reporteT' => ReporteTrimestral::latest()->get()]);
     }
 }
