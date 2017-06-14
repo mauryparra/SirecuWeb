@@ -22,6 +22,7 @@ class CreateReportesIngresosTable extends Migration
             $table->timestamps();
 
             $table->foreign('reporte_trimestral_id')->references('id')->on('reportes_trimestrales');
+            $table->unique('reporte_trimestral_id');
         });
     }
 
