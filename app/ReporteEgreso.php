@@ -53,6 +53,6 @@ class ReporteEgreso extends Model
 
     public function path()
     {
-        return '/egresos/' . $this->id;
+        return '/egresos/' . $this->reporteTrimestral->id;
     }
 }

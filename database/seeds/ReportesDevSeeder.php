@@ -28,7 +28,7 @@ class ReportesDevSeeder extends Seeder
         }
 
         // Reportes Ingresos
-        foreach (App\ReporteTrimestral::latest()->get() as $reporteT) {
+        foreach (App\ReporteTrimestral::all() as $reporteT) {
             DB::table('reportes_ingresos')->insert([
                 'reporte_trimestral_id' => $reporteT->id,
                 'total_provincial' => rand(50, 300),
@@ -38,7 +38,7 @@ class ReportesDevSeeder extends Seeder
         }
 
         // Reportes Ingresos Mensuales
-        foreach (App\ReporteIngreso::latest()->get() as $reporteI) {
+        foreach (App\ReporteIngreso::all() as $reporteI) {
             for ($mes=1; $mes < 4; $mes++) {
                 DB::table('reportes_ingresos_mensuales')->insert([
                     'reporte_ingreso_id' => $reporteI->id,
@@ -46,6 +46,34 @@ class ReportesDevSeeder extends Seeder
                     'ingresos_provincial' => rand(50, 300),
                     'ingresos_otros' => rand(50, 300),
                     'ingresos_central' => rand(50, 300),
+                ]);
+            }
+        }
+
+        // Reportes Egresos
+        foreach (App\ReporteTrimestral::all() as $reporteT) {
+            DB::table('reportes_egresos')->insert([
+                'reporte_trimestral_id' => $reporteT->id,
+                'seccional_id' => $reporteT->seccional_id,
+                'total' => rand(120, 980),
+            ]);
+
+            DB::table('reportes_egresos')->insert([
+                'reporte_trimestral_id' => $reporteT->id,
+                'seccional_id' => App\Seccional::where('nombre', '=', 'UDA Central')->firstOrFail()->id,
+                'total' => rand(120, 980),
+            ]);
+        }
+
+        // Reportes Egresos Categorias
+        foreach (App\ReporteEgreso::all() as $reporteE) {
+            foreach (App\CategoriaGasto::all() as $categoria) {
+                DB::table('reportes_egresos_categorias')->insert([
+                    'reporte_egreso_id' => $reporteE->id,
+                    'categoria_gasto_id' => $categoria->id,
+                    'total_mes_1' => rand(100, 500),
+                    'total_mes_2' => rand(100, 500),
+                    'total_mes_3' => rand(100, 500),
                 ]);
             }
         }
