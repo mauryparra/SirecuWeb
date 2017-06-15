@@ -38,9 +38,9 @@ class ReporteTrimestral extends Model
     /**
      * Obtiene los reportes de egresos asociados al trimestre
      */
-    public function egresos()
+    public function egreso()
     {
-        return $this->hasMany('App\ReporteEgreso', 'reporte_trimestral_id');
+        return $this->hasOne('App\ReporteEgreso', 'reporte_trimestral_id');
     }
 
     /**

@@ -54,14 +54,8 @@ class ReportesDevSeeder extends Seeder
         foreach (App\ReporteTrimestral::all() as $reporteT) {
             DB::table('reportes_egresos')->insert([
                 'reporte_trimestral_id' => $reporteT->id,
-                'seccional_id' => $reporteT->seccional_id,
                 'total' => rand(120, 980),
-            ]);
-
-            DB::table('reportes_egresos')->insert([
-                'reporte_trimestral_id' => $reporteT->id,
-                'seccional_id' => App\Seccional::where('nombre', '=', 'UDA Central')->firstOrFail()->id,
-                'total' => rand(120, 980),
+                'total_central' => rand(120, 980),
             ]);
         }
 
@@ -74,6 +68,9 @@ class ReportesDevSeeder extends Seeder
                     'total_mes_1' => rand(100, 500),
                     'total_mes_2' => rand(100, 500),
                     'total_mes_3' => rand(100, 500),
+                    'total_mes_1_central' => rand(100, 500),
+                    'total_mes_2_central' => rand(100, 500),
+                    'total_mes_3_central' => rand(100, 500),
                 ]);
             }
         }

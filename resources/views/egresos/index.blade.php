@@ -18,6 +18,7 @@
                                     <th>Reporte Trimestral</th>
                                     <th>Seccional</th>
                                     <th>Total</th>
+                                    <th>Total por UDA Central</th>
                                     <th>Egresos Por Categorias</th>
                                 </tr>
                             </thead>
@@ -25,8 +26,9 @@
                                 @foreach ($reportesEgresos as $reporte)
                                     <tr>
                                         <th scope="row"><a class="btn btn-default btn-sm" href="{{ $reporte->reporteTrimestral->path() }}">{{ $reporte->reporteTrimestral->trimestre->nombre . "/" . $reporte->reporteTrimestral->año . " " . $reporte->reporteTrimestral->seccional->nombre  }}</a></th>
-                                        <td>{{ $reporte->seccional->nombre }}</td>
+                                        <td>{{ $reporte->reporteTrimestral->seccional->nombre }}</td>
                                         <td>{{ $reporte->total }}</td>
+                                        <td>{{ $reporte->total_central }}</td>
                                         <td><a class="btn btn-default btn-sm" href="{{ $reporte->path() }}">Ver Detalles</a></td>
                                     </tr>
                                 @endforeach

@@ -25,7 +25,7 @@ class ReporteEgreso extends Model
      *
      * @var array
      */
-    protected $fillable = ['total'];
+    protected $fillable = ['total', 'total_central'];
 
     /**
      * Obtiene el reporte trimestral asociado al reporte de egresos
@@ -33,14 +33,6 @@ class ReporteEgreso extends Model
     public function reporteTrimestral()
     {
         return $this->belongsTo('App\ReporteTrimestral', 'reporte_trimestral_id');
-    }
-
-    /**
-     * Obtiene la seccional asociada al reporte de egresos
-     */
-    public function seccional()
-    {
-        return $this->belongsTo('App\Seccional', 'seccional_id');
     }
 
     /**
@@ -53,6 +45,6 @@ class ReporteEgreso extends Model
 
     public function path()
     {
-        return '/egresos/' . $this->reporteTrimestral->id;
+        return '/egresos/' . $this->id;
     }
 }

@@ -54,13 +54,9 @@ class ReporteEgresoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($reporte_trimestral_id)
+    public function show($id)
     {
-        $reporteSecc = ReporteEgreso::where('reporte_trimestral_id', $reporte_trimestral_id)
-            ->where('seccional_id', '>', 1)->firstOrFail();
-        $reporteCentral = ReporteEgreso::where('reporte_trimestral_id', $reporte_trimestral_id)
-            ->where('seccional_id', '=', 1)->firstOrFail();
-        return view('egresos.show', ['reporteSecc' => $reporteSecc, 'reporteCentral' => $reporteCentral]);
+        return view('egresos.show', ['reporteEgreso' => ReporteEgreso::findOrFail($id)]);
     }
 
     /**

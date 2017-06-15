@@ -26,4 +26,4 @@ Route::get('/ingresos', 'ReporteIngresoController@index')->name('ingresos.index'
 Route::get('/ingresos/{id}', 'ReporteIngresoController@show')->name('ingresos.show');
 
 Route::get('/egresos', 'ReporteEgresoController@index')->name('egresos.index');
-Route::get('/egresos/{reporte_trimestral_id}', 'ReporteEgresoController@show')->name('egresos.show');
+Route::get('/egresos/{id}', 'ReporteEgresoController@show')->name('egresos.show');

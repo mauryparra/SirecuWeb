@@ -25,7 +25,14 @@ class ReporteEgresoCategoria extends Model
      *
      * @var array
      */
-    protected $fillable = ['total_mes_1', 'total_mes_2', 'total_mes_3'];
+    protected $fillable = [
+        'total_mes_1',
+        'total_mes_2',
+        'total_mes_3',
+        'total_mes_1_central',
+        'total_mes_2_central',
+        'total_mes_3_central',
+    ];
 
     /**
      * Obtiene el reporte de egresos asociado al reporte de egresos por categorias

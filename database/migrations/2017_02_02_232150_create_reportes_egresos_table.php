@@ -16,13 +16,12 @@ class CreateReportesEgresosTable extends Migration
         Schema::create('reportes_egresos', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('reporte_trimestral_id')->unsigned();
-            $table->integer('seccional_id')->unsigned();
             $table->decimal('total', 11, 2);
+            $table->decimal('total_central', 11, 2);
             $table->timestamps();
 
             $table->foreign('reporte_trimestral_id')->references('id')->on('reportes_trimestrales');
-            $table->foreign('seccional_id')->references('id')->on('seccionales');
-            $table->unique(['reporte_trimestral_id', 'seccional_id']);
+            $table->unique('reporte_trimestral_id');
         });
     }
 

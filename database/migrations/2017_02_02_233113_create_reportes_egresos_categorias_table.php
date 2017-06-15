@@ -20,6 +20,9 @@ class CreateReportesEgresosCategoriasTable extends Migration
             $table->decimal('total_mes_1', 11, 2);
             $table->decimal('total_mes_2', 11, 2);
             $table->decimal('total_mes_3', 11, 2);
+            $table->decimal('total_mes_1_central', 11, 2);
+            $table->decimal('total_mes_2_central', 11, 2);
+            $table->decimal('total_mes_3_central', 11, 2);
             $table->timestamps();
 
             $table->foreign('reporte_egreso_id')->references('id')->on('reportes_egresos');

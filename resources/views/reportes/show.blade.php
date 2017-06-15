@@ -37,7 +37,7 @@
                                     <td>{{ $reporteT->egresos }}</td>
                                     <td>{{ $reporteT->saldo_final }}</td>
                                     <td><a class="btn btn-default btn-sm" href="{{ $reporteT->ingreso->path() }}">Ver Reporte</a></td>
-                                    <td><a class="btn btn-default btn-sm" href="#">Ver Reporte</a></td>
+                                    <td><a class="btn btn-default btn-sm" href="{{ $reporteT->egreso->path() }}">Ver Reporte</a></td>
                                 </tr>
                             </tbody>
                         </table>
