@@ -16,15 +16,22 @@ class ReporteTrimestralController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('reportes.index', ['reporteT' => ReporteTrimestral::latest()->get()]);
+        $q = $request->query();
+        if ($q)
+        {
+            return view('reportes.index', ['reporteT' => ReporteTrimestral::Search($q)->get()]);
+        }
+        else {
+            return view('reportes.index', ['reporteT' => ReporteTrimestral::latest()->get()]);
+        }
     }
 
     /**
@@ -54,9 +61,9 @@ class ReporteTrimestralController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(ReporteTrimestral $reporteT)
     {
-        return view('reportes.show', ['reporteT' => ReporteTrimestral::findOrFail($id)]);
+        return view('reportes.show', compact('reporteT'));
     }
 
     /**

@@ -5,6 +5,8 @@
     <div class="row">
         <div class="col-md-12">
 
+            @include('bloques.buscar')
+
             <div class="panel panel-default">
                 <!-- Default panel contents -->
                 <div class="panel-heading">Reportes Trimestrales</div>
@@ -33,10 +35,10 @@
                                         <th scope="row">{{ $reporte->seccional->nombre }}</th>
                                         <td>{{ $reporte->trimestre->nombre }}</td>
                                         <td>{{ $reporte->año }}</td>
-                                        <td>{{ $reporte->saldo_inicial }}</td>
-                                        <td>{{ $reporte->ingresos }}</td>
-                                        <td>{{ $reporte->egresos }}</td>
-                                        <td>{{ $reporte->saldo_final }}</td>
+                                        <td>${{ $reporte->saldo_inicial }}</td>
+                                        <td>${{ $reporte->ingresos }}</td>
+                                        <td>${{ $reporte->egresos }}</td>
+                                        <td>${{ $reporte->saldo_final }}</td>
                                         <td><a class="btn btn-default btn-sm" href="{{ $reporte->ingreso->path() }}">Ver Reporte</a></td>
                                         <td><a class="btn btn-default btn-sm" href="{{ $reporte->egreso->path() }}">Ver Reporte</a></td>
                                     </tr>

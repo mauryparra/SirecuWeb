@@ -24,7 +24,7 @@
                                 <tr>
                                     <th scope="row"><a class="btn btn-default btn-sm" href="{{ $reporteEgreso->reporteTrimestral->path() }}">{{ $reporteEgreso->reporteTrimestral->trimestre->nombre }} {{ $reporteEgreso->reporteTrimestral->seccional->nombre }}</a></th>
                                     <td>{{ $reporteEgreso->reporteTrimestral->seccional->nombre }}</td>
-                                    <td>{{ $reporteEgreso->total }}</td>
+                                    <td>${{ $reporteEgreso->total }}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -49,9 +49,9 @@
                                 @foreach ($reporteEgreso->reporteEgresosCategorias()->get() as $reporte)
                                     <tr>
                                         <th scope="row">{{ $reporte->categoriaGasto->nombre }}</th>
-                                        <td>{{ $reporte->total_mes_1 }}</td>
-                                        <td>{{ $reporte->total_mes_2 }}</td>
-                                        <td>{{ $reporte->total_mes_3 }}</td>
+                                        <td>${{ $reporte->total_mes_1 }}</td>
+                                        <td>${{ $reporte->total_mes_2 }}</td>
+                                        <td>${{ $reporte->total_mes_3 }}</td>
                                         <td></td>
                                     </tr>
                                 @endforeach
@@ -81,7 +81,7 @@
                                 <tr>
                                     <th scope="row"><a class="btn btn-default btn-sm" href="{{ $reporteEgreso->reporteTrimestral->path() }}">{{ $reporteEgreso->reporteTrimestral->trimestre->nombre }} {{ $reporteEgreso->reporteTrimestral->seccional->nombre }}</a></th>
                                     <td>UDA Central</td>
-                                    <td>{{ $reporteEgreso->total_central }}</td>
+                                    <td>${{ $reporteEgreso->total_central }}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -106,9 +106,9 @@
                                 @foreach ($reporteEgreso->reporteEgresosCategorias()->get() as $reporte)
                                     <tr>
                                         <th scope="row">{{ $reporte->categoriaGasto->nombre }}</th>
-                                        <td>{{ $reporte->total_mes_1_central }}</td>
-                                        <td>{{ $reporte->total_mes_2_central }}</td>
-                                        <td>{{ $reporte->total_mes_3_central }}</td>
+                                        <td>${{ $reporte->total_mes_1_central }}</td>
+                                        <td>${{ $reporte->total_mes_2_central }}</td>
+                                        <td>${{ $reporte->total_mes_3_central }}</td>
                                         <td></td>
                                     </tr>
                                 @endforeach

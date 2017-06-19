@@ -12,9 +12,11 @@
                 </div>
             </div>
 
+            @include('bloques.buscar')
+
             <div class="panel panel-default">
                 <!-- Default panel contents -->
-                <div class="panel-heading">Reports</div>
+                <div class="panel-heading">Reportes</div>
                 <div class="panel-body">
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut semper sollicitudin libero eget finibus. Curabitur massa leo, suscipit vel eros ac, porttitor viverra neque. Vestibulum feugiat mauris ut dignissim molestie.</p>
 
@@ -41,10 +43,10 @@
                                         <th scope="row">{{ $reporte->seccional->nombre }}</th>
                                         <td>{{ $reporte->trimestre->nombre }}</td>
                                         <td>{{ $reporte->año }}</td>
-                                        <td>{{ $reporte->saldo_inicial }}</td>
-                                        <td>{{ $reporte->ingresos }}</td>
-                                        <td>{{ $reporte->egresos }}</td>
-                                        <td>{{ $reporte->saldo_final }}</td>
+                                        <td>${{ $reporte->saldo_inicial }}</td>
+                                        <td>${{ $reporte->ingresos }}</td>
+                                        <td>${{ $reporte->egresos }}</td>
+                                        <td>${{ $reporte->saldo_final }}</td>
                                         <td><a class="btn btn-default btn-sm" href="{{ $reporte->path() }}">Ver Reporte</a></td>
                                         <td><a class="btn btn-default btn-sm" href="{{ $reporte->ingreso->path() }}">Ver Reporte</a></td>
                                         <td><a class="btn btn-default btn-sm" href="{{ $reporte->egreso->path() }}">Ver Reporte</a></td>

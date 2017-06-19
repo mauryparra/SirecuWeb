@@ -24,7 +24,9 @@ class ReporteIngresoController extends Controller
      */
     public function index()
     {
-        return view('ingresos.index', ['reportesIngresos' => ReporteIngreso::latest()->get()]);
+        $reportesIngresos = ReporteIngreso::latest()->get();
+        
+        return view('ingresos.index', compact('reportesIngresos'));
     }
 
     /**
@@ -54,9 +56,9 @@ class ReporteIngresoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(ReporteIngreso $reporteIngreso)
     {
-        return view('ingresos.show', ['reporteIngreso' => ReporteIngreso::findOrFail($id)]);
+        return view('ingresos.show', compact('reporteIngreso'));
     }
 
     /**

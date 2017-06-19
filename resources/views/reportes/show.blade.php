@@ -32,10 +32,10 @@
                                     <th scope="row">{{ $reporteT->seccional->nombre }}</th>
                                     <td>{{ $reporteT->trimestre->nombre }}</td>
                                     <td>{{ $reporteT->año }}</td>
-                                    <td>{{ $reporteT->saldo_inicial }}</td>
-                                    <td>{{ $reporteT->ingresos }}</td>
-                                    <td>{{ $reporteT->egresos }}</td>
-                                    <td>{{ $reporteT->saldo_final }}</td>
+                                    <td>${{ $reporteT->saldo_inicial }}</td>
+                                    <td>${{ $reporteT->ingresos }}</td>
+                                    <td>${{ $reporteT->egresos }}</td>
+                                    <td>${{ $reporteT->saldo_final }}</td>
                                     <td><a class="btn btn-default btn-sm" href="{{ $reporteT->ingreso->path() }}">Ver Reporte</a></td>
                                     <td><a class="btn btn-default btn-sm" href="{{ $reporteT->egreso->path() }}">Ver Reporte</a></td>
                                 </tr>

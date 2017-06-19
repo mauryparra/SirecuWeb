@@ -24,7 +24,9 @@ class ReporteEgresoController extends Controller
      */
     public function index()
     {
-        return view('egresos.index', ['reportesEgresos' => ReporteEgreso::latest()->get()]);
+        $reportesEgresos = ReporteEgreso::latest()->get();
+
+        return view('egresos.index', compact('reportesEgresos'));
     }
 
     /**
@@ -54,9 +56,9 @@ class ReporteEgresoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(ReporteEgreso $reporteEgreso)
     {
-        return view('egresos.show', ['reporteEgreso' => ReporteEgreso::findOrFail($id)]);
+        return view('egresos.show', compact('reporteEgreso'));
     }
 
     /**

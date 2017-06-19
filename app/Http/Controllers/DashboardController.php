@@ -22,8 +22,15 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('dashboard', ['reporteT' => ReporteTrimestral::latest()->get()]);
+        $q = $request->query();
+        if ($q)
+        {
+            return view('dashboard', ['reporteT' => ReporteTrimestral::Search($q)->get()]);
+        }
+        else {
+            return view('dashboard', ['reporteT' => ReporteTrimestral::latest()->get()]);
+        }
     }
 }

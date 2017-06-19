@@ -63,4 +63,10 @@ class ReporteTrimestral extends Model
     {
         return '/reportes/' . $this->id;
     }
+
+    public function scopeSearch($query, $parameters)
+    {
+        return $query->where('trimestre_id', $parameters['trimestre'])
+            ->where('año', $parameters['año']);
+    }
 }

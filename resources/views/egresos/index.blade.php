@@ -27,8 +27,8 @@
                                     <tr>
                                         <th scope="row"><a class="btn btn-default btn-sm" href="{{ $reporte->reporteTrimestral->path() }}">{{ $reporte->reporteTrimestral->trimestre->nombre . "/" . $reporte->reporteTrimestral->año . " " . $reporte->reporteTrimestral->seccional->nombre  }}</a></th>
                                         <td>{{ $reporte->reporteTrimestral->seccional->nombre }}</td>
-                                        <td>{{ $reporte->total }}</td>
-                                        <td>{{ $reporte->total_central }}</td>
+                                        <td>${{ $reporte->total }}</td>
+                                        <td>${{ $reporte->total_central }}</td>
                                         <td><a class="btn btn-default btn-sm" href="{{ $reporte->path() }}">Ver Detalles</a></td>
                                     </tr>
                                 @endforeach

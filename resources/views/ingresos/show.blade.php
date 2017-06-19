@@ -24,9 +24,9 @@
                             <tbody>
                                 <tr>
                                     <th scope="row"><a class="btn btn-default btn-sm" href="{{ $reporteIngreso->reporteTrimestral->path() }}">{{ $reporteIngreso->reporteTrimestral->trimestre->nombre }} {{ $reporteIngreso->reporteTrimestral->seccional->nombre }}</a></th>
-                                    <td>{{ $reporteIngreso->total_provincial }}</td>
-                                    <td>{{ $reporteIngreso->coparticipacion }}</td>
-                                    <td>{{ $reporteIngreso->total_general }}</td>
+                                    <td>${{ $reporteIngreso->total_provincial }}</td>
+                                    <td>${{ $reporteIngreso->coparticipacion }}</td>
+                                    <td>${{ $reporteIngreso->total_general }}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -55,9 +55,9 @@
                                 @foreach ($reporteIngreso->reportesIngresosMensuales()->get() as $reporte)
                                     <tr>
                                         <th scope="row">{{ Carbon\Carbon::parse($reporte->mes)->format('F') }}</th>
-                                        <td>{{ $reporte->ingresos_central }}</td>
-                                        <td>{{ $reporte->ingresos_provincial }}</td>
-                                        <td>{{ $reporte->ingresos_otros }}</td>
+                                        <td>${{ $reporte->ingresos_central }}</td>
+                                        <td>${{ $reporte->ingresos_provincial }}</td>
+                                        <td>${{ $reporte->ingresos_otros }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
