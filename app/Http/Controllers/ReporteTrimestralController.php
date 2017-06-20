@@ -24,13 +24,13 @@ class ReporteTrimestralController extends Controller
      */
     public function index(Request $request)
     {
-        $q = $request->query();
-        if ($q)
+        if ($request->exists('trimestre') && ($request->exists('año')))
         {
-            return view('reportes.index', ['reporteT' => ReporteTrimestral::Search($q)->get()]);
+            $q = $request->query();
+            return view('reportes.index', ['reporteT' => ReporteTrimestral::Search($q)->paginate(6)]);
         }
         else {
-            return view('reportes.index', ['reporteT' => ReporteTrimestral::latest()->get()]);
+            return view('reportes.index', ['reporteT' => ReporteTrimestral::latest()->paginate(6)]);
         }
     }
 

@@ -2,7 +2,7 @@
     <div class="panel-heading">Buscar</div>
 
     <div class="panel-body text-center">
-        <form class="form-inline" role="form" method="GET" action="">
+        <form class="form-inline" role="form" method="GET">
 
             <div class="form-group">
                 <label for="trimestre">Trimestre</label>
