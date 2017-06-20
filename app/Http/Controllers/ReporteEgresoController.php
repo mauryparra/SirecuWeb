@@ -24,7 +24,7 @@ class ReporteEgresoController extends Controller
      */
     public function index()
     {
-        $reportesEgresos = ReporteEgreso::latest()->get();
+        $reportesEgresos = ReporteEgreso::latest()->paginate(6);
 
         return view('egresos.index', compact('reportesEgresos'));
     }

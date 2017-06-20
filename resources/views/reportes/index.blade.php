@@ -45,6 +45,9 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        <div class="text-center">
+                            {{ $reporteT->links() }}
+                        </div>
                     </div>
                     <!-- Table -->
                 </div>

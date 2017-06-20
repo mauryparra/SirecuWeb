@@ -24,8 +24,8 @@ class ReporteIngresoController extends Controller
      */
     public function index()
     {
-        $reportesIngresos = ReporteIngreso::latest()->get();
-        
+        $reportesIngresos = ReporteIngreso::latest()->paginate(6);
+
         return view('ingresos.index', compact('reportesIngresos'));
     }
 

@@ -24,13 +24,13 @@ class DashboardController extends Controller
      */
     public function index(Request $request)
     {
-        $q = $request->query();
-        if ($q)
+        if ($request->exists('trimestre') && ($request->exists('año')))
         {
-            return view('dashboard', ['reporteT' => ReporteTrimestral::Search($q)->get()]);
+            $q = $request->query();
+            return view('dashboard', ['reporteT' => ReporteTrimestral::Search($q)->paginate(6)]);
         }
         else {
-            return view('dashboard', ['reporteT' => ReporteTrimestral::latest()->get()]);
+            return view('dashboard', ['reporteT' => ReporteTrimestral::latest()->paginate(6)]);
         }
     }
 }
