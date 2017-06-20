@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\ReporteTrimestral;
+use Charts;
 
 class DashboardController extends Controller
 {
@@ -27,10 +28,27 @@ class DashboardController extends Controller
         if ($request->exists('trimestre') && ($request->exists('año')))
         {
             $q = $request->query();
-            return view('dashboard', ['reporteT' => ReporteTrimestral::Search($q)->paginate(6)]);
+            $reporteT = ReporteTrimestral::Search($q)->paginate(6);
         }
         else {
-            return view('dashboard', ['reporteT' => ReporteTrimestral::latest()->paginate(6)]);
+            $reporteT = ReporteTrimestral::latest()
+                ->with('trimestre', 'seccional', 'ingreso', 'egreso')
+                ->paginate(6);
         }
+
+        $chart = Charts::multi('areaspline', 'highcharts')
+            ->title('Ingresos/Egresos')
+            ->colors(['#4572a7', '#aa4643'])
+            ->labels($reporteT->map(function ($item) {
+                return $item->trimestre->nombre . ' ' .
+                    $item->año;
+                }))
+            ->plotBandsFrom(0)
+            ->plotBandsTo(0)
+            ->dataset('Ingresos', $reporteT->pluck('ingresos'))
+            ->dataset('Egresos',  $reporteT->pluck('egresos'));
+
+        return view('dashboard', compact(['reporteT', 'chart']));
+
     }
 }

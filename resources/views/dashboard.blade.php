@@ -8,7 +8,7 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut semper sollicitudin libero eget finibus. Curabitur massa leo, suscipit vel eros ac, porttitor viverra neque. Vestibulum feugiat mauris ut dignissim molestie. In cursus odio non facilisis laoreet. Morbi efficitur arcu a quam volutpat, vehicula iaculis nisl volutpat. Maecenas pellentesque faucibus eros sed vestibulum. Donec lacus dolor, vestibulum sed dictum eget, aliquet a eros.
+                    {!! $chart->render() !!}
                 </div>
             </div>
 
