@@ -67,6 +67,7 @@ class ReporteTrimestral extends Model
     public function scopeSearch($query, $parameters)
     {
         return $query->where('trimestre_id', $parameters['trimestre'])
-            ->where('año', $parameters['año']);
+            ->where('año', $parameters['año'])
+            ->where('seccional_id', $parameters['seccional']);
     }
 }

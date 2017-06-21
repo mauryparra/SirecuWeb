@@ -12,7 +12,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    {!! Charts::assets() !!}
+    @if ( ! empty($chart))
+        {!! Charts::assets() !!}
+    @endif
 </head>
 <body>
     <div id="app">
@@ -39,6 +41,7 @@
                     <ul class="nav navbar-nav">
                         <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
                         <li><a href="{{ route('reportes.index') }}">Reportes</a></li>
+                        <li><a href="{{ route('graficos.index') }}">Gráficos</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

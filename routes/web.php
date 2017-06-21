@@ -27,3 +27,5 @@ Route::get('/ingresos/{reporteIngreso}', 'ReporteIngresoController@show')->name(
 
 Route::get('/egresos', 'ReporteEgresoController@index')->name('egresos.index');
 Route::get('/egresos/{reporteEgreso}', 'ReporteEgresoController@show')->name('egresos.show');
+
+Route::get('/graficos', 'GraficoController@index')->name('graficos.index');
