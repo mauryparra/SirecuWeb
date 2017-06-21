@@ -46,7 +46,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($reporteEgreso->reporteEgresosCategorias()->get() as $reporte)
+                                @foreach ($reporteEgreso->reportesEgresosCategorias as $reporte)
                                     <tr>
                                         <th scope="row">{{ $reporte->categoriaGasto->nombre }}</th>
                                         <td>${{ $reporte->total_mes_1 }}</td>
@@ -103,7 +103,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($reporteEgreso->reporteEgresosCategorias()->get() as $reporte)
+                                @foreach ($reporteEgreso->reportesEgresosCategorias as $reporte)
                                     <tr>
                                         <th scope="row">{{ $reporte->categoriaGasto->nombre }}</th>
                                         <td>${{ $reporte->total_mes_1_central }}</td>

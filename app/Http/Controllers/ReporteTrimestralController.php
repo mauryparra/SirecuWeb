@@ -20,6 +20,7 @@ class ReporteTrimestralController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
@@ -27,11 +28,17 @@ class ReporteTrimestralController extends Controller
         if ($request->exists('trimestre') && ($request->exists('año')))
         {
             $q = $request->query();
-            return view('reportes.index', ['reporteT' => ReporteTrimestral::Search($q)->paginate(6)]);
+            $reporteT = ReporteTrimestral::Search($q)
+                ->with('trimestre', 'seccional', 'ingreso', 'egreso')
+                ->paginate(6);
         }
         else {
-            return view('reportes.index', ['reporteT' => ReporteTrimestral::latest()->paginate(6)]);
+            $reporteT = ReporteTrimestral::latest()
+                ->with('trimestre', 'seccional', 'ingreso', 'egreso')
+                ->paginate(6);
         }
+
+        return view('reportes.index', compact('reporteT'));
     }
 
     /**
@@ -58,7 +65,7 @@ class ReporteTrimestralController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  ReporteTrimestral  $reporteT
      * @return \Illuminate\Http\Response
      */
     public function show(ReporteTrimestral $reporteT)

@@ -38,7 +38,7 @@ class ReporteEgreso extends Model
     /**
      * Obtiene los reportes de egresos por categorias asociadas al reporte de egresos
      */
-    public function reporteEgresosCategorias()
+    public function reportesEgresosCategorias()
     {
         return $this->hasMany('App\ReporteEgresoCategoria', 'reporte_egreso_id');
     }

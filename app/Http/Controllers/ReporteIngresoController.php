@@ -24,7 +24,9 @@ class ReporteIngresoController extends Controller
      */
     public function index()
     {
-        $reportesIngresos = ReporteIngreso::latest()->paginate(6);
+        $reportesIngresos = ReporteIngreso::latest()
+            ->with('reporteTrimestral.trimestre', 'reporteTrimestral.seccional')
+            ->paginate(6);
 
         return view('ingresos.index', compact('reportesIngresos'));
     }
@@ -53,7 +55,7 @@ class ReporteIngresoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  ReporteIngreso  $reporteIngreso
      * @return \Illuminate\Http\Response
      */
     public function show(ReporteIngreso $reporteIngreso)

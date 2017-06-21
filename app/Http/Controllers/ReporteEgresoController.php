@@ -24,7 +24,9 @@ class ReporteEgresoController extends Controller
      */
     public function index()
     {
-        $reportesEgresos = ReporteEgreso::latest()->paginate(6);
+        $reportesEgresos = ReporteEgreso::latest()
+            ->with('reporteTrimestral.trimestre', 'reporteTrimestral.seccional')
+            ->paginate(6);
 
         return view('egresos.index', compact('reportesEgresos'));
     }
@@ -53,11 +55,12 @@ class ReporteEgresoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  ReporteEgreso  $reporteEgreso
      * @return \Illuminate\Http\Response
      */
     public function show(ReporteEgreso $reporteEgreso)
     {
+        $reporteEgreso->load('reportesEgresosCategorias.categoriaGasto')->get();
         return view('egresos.show', compact('reporteEgreso'));
     }
 
