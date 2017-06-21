@@ -20,7 +20,7 @@ Auth::routes();
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
 Route::get('/reportes', 'ReporteTrimestralController@index')->name('reportes.index');
-Route::get('/reportes/{reporteEgreso}', 'ReporteTrimestralController@show')->name('reportes.show');
+Route::get('/reportes/{reporteT}', 'ReporteTrimestralController@show')->name('reportes.show');
 
 Route::get('/ingresos', 'ReporteIngresoController@index')->name('ingresos.index');
 Route::get('/ingresos/{reporteIngreso}', 'ReporteIngresoController@show')->name('ingresos.show');
