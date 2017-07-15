@@ -28,15 +28,19 @@ class GraficoController extends Controller
      */
     public function index(Request $request)
     {
+
         if ($request->exists(['grafico', 'seccional', 'trimestreDesde', 'añoDesde', 'trimestreHasta', 'añoHasta']))
         {
+            $fechaDesde = Trimestre::find($request->input('trimestreDesde'))->fecha_inicio;
+            $fechaDesde->year = $request->input('añoDesde');
+            $fechaHasta = Trimestre::find($request->input('trimestreHasta'))->fecha_inicio;
+            $fechaHasta->year = $request->input('añoHasta');
+
             if ($request->input('grafico') == "ingreso/egreso")
             {
                 $data = ReporteTrimestral::where('seccional_id', $request->input('seccional'))
-                    ->where('trimestre_id', '>=', $request->input('trimestreDesde'))
-                    ->where('año', '>=', $request->input('añoDesde'))
-                    ->where('trimestre_id', '<=', $request->input('trimestreHasta'))
-                    ->where('año', '<=', $request->input('añoHasta'))
+                    ->where('fecha', '>=', $fechaDesde)
+                    ->where('fecha', '<=', $fechaHasta)
                     ->with('trimestre', 'seccional', 'ingreso', 'egreso')
                     ->get();
 
@@ -45,7 +49,7 @@ class GraficoController extends Controller
                     ->colors(['#4572a7', '#aa4643'])
                     ->labels($data->map(function ($item) {
                         return $item->trimestre->nombre . ' ' .
-                            $item->año;
+                            $item->fecha->year;
                         }))
                     ->plotBandsFrom(0)
                     ->plotBandsTo(0)
@@ -82,10 +86,5 @@ class GraficoController extends Controller
                 'trimestres' => Trimestre::all()
             ]);
         }
-
-
-
-
-
     }
 }

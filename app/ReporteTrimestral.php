@@ -28,6 +28,13 @@ class ReporteTrimestral extends Model
     protected $fillable = ['saldo_inicial', 'ingresos', 'egresos', 'saldo_final'];
 
     /**
+     * Las columnas de la tabla de tipo Date
+     *
+     * @var array
+     */
+    protected $dates = ['fecha'];
+
+    /**
      * Obtiene el reporte de ingresos asociado al trimestre
      */
     public function ingreso()
@@ -59,6 +66,9 @@ class ReporteTrimestral extends Model
         return $this->belongsTo('App\Trimestre', 'trimestre_id');
     }
 
+    /**
+     * Devuelve la url del reporte trimestral
+     */
     public function path()
     {
         return '/reportes/' . $this->id;
@@ -67,7 +77,7 @@ class ReporteTrimestral extends Model
     public function scopeSearch($query, $parameters)
     {
         return $query->where('trimestre_id', $parameters['trimestre'])
-            ->where('año', $parameters['año'])
+            ->where('fecha', 'LIKE', $parameters['año'].'-%') // TODO Check
             ->where('seccional_id', $parameters['seccional']);
     }
 }

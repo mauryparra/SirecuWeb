@@ -17,7 +17,7 @@ class CreateReportesTrimestralesTable extends Migration
             $table->increments('id');
             $table->integer('seccional_id')->unsigned();
             $table->integer('trimestre_id')->unsigned();
-            $table->smallInteger('año')->unsigned();
+            $table->date('fecha');
             $table->decimal('saldo_inicial', 11, 2);
             $table->decimal('ingresos', 11, 2);
             $table->decimal('egresos', 11, 2);
@@ -26,7 +26,7 @@ class CreateReportesTrimestralesTable extends Migration
 
             $table->foreign('seccional_id')->references('id')->on('seccionales');
             $table->foreign('trimestre_id')->references('id')->on('trimestres');
-            $table->unique(['seccional_id', 'trimestre_id', 'año']);
+            $table->unique(['seccional_id', 'trimestre_id', 'fecha']);
         });
     }
 

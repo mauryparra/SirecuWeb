@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Carbon\Carbon;
 
 class ReportesDevSeeder extends Seeder
 {
@@ -15,10 +16,23 @@ class ReportesDevSeeder extends Seeder
         // Reportes Trimestrales
         for ($año=2015; $año < 2018; $año++) {
             for ($trimestre=1; $trimestre < 5; $trimestre++) {
+
+                $mes = 1;
+                if ($trimestre == 2)
+                {
+                    $mes = 4;
+                }
+                elseif ($trimestre == 3) {
+                    $mes = 7;
+                }
+                elseif ($trimestre == 4) {
+                    $mes = 10;
+                }
+
                 DB::table('reportes_trimestrales')->insert([
                     'seccional_id' => 2,
                     'trimestre_id' => $trimestre,
-                    'año' => $año,
+                    'fecha' => Carbon::createFromFormat('Y-m-d', $año . '-'. $mes . '-' . 1),
                     'saldo_inicial' => rand(50, 300),
                     'ingresos' => rand(50, 300),
                     'egresos' => rand(50, 300),
@@ -42,7 +56,7 @@ class ReportesDevSeeder extends Seeder
             for ($mes=1; $mes < 4; $mes++) {
                 DB::table('reportes_ingresos_mensuales')->insert([
                     'reporte_ingreso_id' => $reporteI->id,
-                    'mes' => $reporteI->reporteTrimestral->año . '-' . $mes . '-01',
+                    'mes' => $reporteI->reporteTrimestral->fecha->year . '-' . $mes . '-01',
                     'ingresos_provincial' => rand(50, 300),
                     'ingresos_otros' => rand(50, 300),
                     'ingresos_central' => rand(50, 300),

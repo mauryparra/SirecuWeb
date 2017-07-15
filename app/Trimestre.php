@@ -34,4 +34,11 @@ class Trimestre extends Model
     {
         return $this->hasMany('App\ReporteTrimestral', 'trimestre_id');
     }
+
+    /**
+     * Las columnas de la tabla de tipo Date
+     *
+     * @var array
+     */
+    protected $dates = ['fecha_inicio', 'fecha_fin'];
 }

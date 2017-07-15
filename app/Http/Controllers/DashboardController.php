@@ -44,7 +44,7 @@ class DashboardController extends Controller
             ->colors(['#4572a7', '#aa4643'])
             ->labels($reporteT->map(function ($item) {
                 return $item->trimestre->nombre . ' ' .
-                    $item->año;
+                    $item->fecha->year;
                 }))
             ->plotBandsFrom(0)
             ->plotBandsTo(0)

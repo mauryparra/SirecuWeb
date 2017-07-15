@@ -31,7 +31,7 @@
                                 <tr>
                                     <th scope="row">{{ $reporteT->seccional->nombre }}</th>
                                     <td>{{ $reporteT->trimestre->nombre }}</td>
-                                    <td>{{ $reporteT->año }}</td>
+                                    <td>{{ $reporteT->fecha->year }}</td>
                                     <td>${{ $reporteT->saldo_inicial }}</td>
                                     <td>${{ $reporteT->ingresos }}</td>
                                     <td>${{ $reporteT->egresos }}</td>

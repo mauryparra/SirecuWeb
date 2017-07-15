@@ -25,7 +25,7 @@
                             <tbody>
                                 @foreach ($reportesIngresos as $reporte)
                                     <tr>
-                                        <th scope="row"><a class="btn btn-default btn-sm" href="{{ $reporte->reporteTrimestral->path() }}">{{ $reporte->reporteTrimestral->trimestre->nombre . "/" . $reporte->reporteTrimestral->año . " " . $reporte->reporteTrimestral->seccional->nombre  }}</a></th>
+                                        <th scope="row"><a class="btn btn-default btn-sm" href="{{ $reporte->reporteTrimestral->path() }}">{{ $reporte->reporteTrimestral->trimestre->nombre . "/" . $reporte->reporteTrimestral->fecha->year . " " . $reporte->reporteTrimestral->seccional->nombre  }}</a></th>
                                         <td>${{ $reporte->total_provincial }}</td>
                                         <td>${{ $reporte->coparticipacion }}</td>
                                         <td>${{ $reporte->total_general }}</td>
