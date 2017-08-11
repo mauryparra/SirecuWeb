@@ -28,6 +28,13 @@ class ReporteIngresoMensual extends Model
     protected $fillable = ['ingresos_provincial', 'ingresos_otros', 'ingresos_central'];
 
     /**
+     * Las columnas de la tabla de tipo Date
+     *
+     * @var array
+     */
+    protected $dates = ['mes'];
+
+    /**
      * Obtiene el reporte de ingresos asociado al reporte de ingresos mensual
      */
     public function reporteIngreso()

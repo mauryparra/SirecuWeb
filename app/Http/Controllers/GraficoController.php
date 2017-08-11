@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\ReporteIngresoMensual;
 use App\ReporteTrimestral;
 use App\Seccional;
 use App\Trimestre;
@@ -41,11 +42,11 @@ class GraficoController extends Controller
                 $data = ReporteTrimestral::where('seccional_id', $request->input('seccional'))
                     ->where('fecha', '>=', $fechaDesde)
                     ->where('fecha', '<=', $fechaHasta)
-                    ->with('trimestre', 'seccional', 'ingreso', 'egreso')
+                    ->with('trimestre', 'seccional')
                     ->get();
 
                 $chart = Charts::multi('areaspline', 'highcharts')
-                    ->title('Ingresos/Egresos')
+                    ->title('Ingresos/Egresos ' . $data->first()->seccional->nombre)
                     ->colors(['#4572a7', '#aa4643'])
                     ->labels($data->map(function ($item) {
                         return $item->trimestre->nombre . ' ' .
@@ -58,7 +59,23 @@ class GraficoController extends Controller
 
             }
             elseif ($request->input('grafico') == "ingresos") {
-                # code...
+                $data = ReporteIngresoMensual::whereHas('reporteIngreso.reporteTrimestral', function($q) use ($request, $fechaDesde, $fechaHasta) {
+                    $q->where('seccional_id', $request->input('seccional'))
+                        ->where('fecha', '>=', $fechaDesde)
+                        ->where('fecha', '<=', $fechaHasta);
+                    })->get();
+
+                $chart = Charts::multi('areaspline', 'highcharts')
+                    ->title('Fuentes de Ingresos')
+                    ->colors(['#4572a7', '#aa4643', '#14ff6b'])
+                    ->labels($data->map(function ($item) {
+                        return $item->mes->format('F - y');
+                        }))
+                    ->plotBandsFrom(0)
+                    ->plotBandsTo(0)
+                    ->dataset('Ingresos Provinciales', $data->pluck('ingresos_provincial'))
+                    ->dataset('Ingresos Central',  $data->pluck('ingresos_central'))
+                    ->dataset('Ingresos Otros',  $data->pluck('ingresos_otros'));
             }
             elseif ($request->input('grafico') == "gastos") {
                 # code...
