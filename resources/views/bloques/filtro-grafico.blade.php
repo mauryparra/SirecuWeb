@@ -7,10 +7,11 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="grafico">Tipo de Gráfico</label>
-                        <select class="form-control" name="grafico" required>
+                        <select class="form-control" name="grafico" id="tipo-grafico" required>
                             <option value="ingreso/egreso" {{ Request::input('grafico') == "ingreso/egreso" ? "selected" : "" }}>Ingresos/Egresos</option>
                             <option value="ingresos" {{ Request::input('grafico') === "ingresos" ? "selected" : "" }}>Fuentes de Ingresos</option>
-                            <option value="gastos" {{ Request::input('grafico') === "gastos" ? "selected" : "" }}>Categorías de Gasto</option>
+                            <option value="gastosTrimestre" {{ Request::input('grafico') === "gastosTrimestre" ? "selected" : "" }}>Egresos por Categorías Trimestral</option>
+                            <option value="gastos" {{ Request::input('grafico') === "gastos" ? "selected" : "" }}>Categorías de Egresos</option>
                             <option value="saldos" {{ Request::input('grafico') === "saldos" ? "selected" : "" }}>Saldos Finales por Trimestre</option>
                         </select>
                     </div>
@@ -43,7 +44,7 @@
                         <input type="numeric" class="form-control" name="añoDesde" value="{{ Request::input('añoDesde') }}" placeholder="2017" required>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 rango">
                     <div class="form-group">
                         <label for="trimestreHasta">Hasta</label>
                         <select class="form-control" name="trimestreHasta" required>
@@ -53,7 +54,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 rango">
                     <div class="form-group">
                         <label for="añoHasta">Año</label>
                         <input type="numeric" class="form-control" name="añoHasta" value="{{ Request::input('añoHasta') }}" placeholder="2017" required>

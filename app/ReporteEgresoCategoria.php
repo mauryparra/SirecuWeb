@@ -49,4 +49,20 @@ class ReporteEgresoCategoria extends Model
     {
         return $this->belongsTo('App\CategoriaGasto', 'categoria_gasto_id');
     }
+
+    /**
+     * Obtiene el total de egresos por categoria de la seccional
+     */
+    public function totalSeccional()
+    {
+        return $this->total_mes_1 + $this->total_mes_2 + $this->total_mes_3;
+    }
+
+    /**
+     * Obtiene el total de egresos por categoria de la central
+     */
+    public function totalCentral()
+    {
+        return $this->total_mes_1_central + $this->total_mes_2_central + $this->total_mes_3_central;
+    }
 }

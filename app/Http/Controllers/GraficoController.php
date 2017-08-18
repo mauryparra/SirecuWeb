@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\ReporteIngresoMensual;
+use App\ReporteEgresoCategoria;
 use App\ReporteTrimestral;
 use App\Seccional;
 use App\Trimestre;
@@ -66,7 +67,7 @@ class GraficoController extends Controller
                     })->get();
 
                 $chart = Charts::multi('areaspline', 'highcharts')
-                    ->title('Fuentes de Ingresos')
+                    ->title('Fuentes de Ingresos ' . Seccional::find($request->input('seccional'))->nombre)
                     ->colors(['#4572a7', '#aa4643', '#14ff6b'])
                     ->labels($data->map(function ($item) {
                         return $item->mes->format('F - y');
@@ -78,10 +79,26 @@ class GraficoController extends Controller
                     ->dataset('Ingresos Otros',  $data->pluck('ingresos_otros'));
             }
             elseif ($request->input('grafico') == "gastos") {
-                # code...
+                // TODO
             }
             elseif ($request->input('grafico') == "saldos") {
-                # code...
+                $data = ReporteTrimestral::where('seccional_id', $request->input('seccional'))
+                    ->where('fecha', '>=', $fechaDesde)
+                    ->where('fecha', '<=', $fechaHasta)
+                    ->with('trimestre', 'seccional')
+                    ->get();
+
+                $chart = Charts::multi('areaspline', 'highcharts')
+                    ->title('Saldos Finales por Trimestre ' . $data->first()->seccional->nombre)
+                    ->colors(['#4572a7', '#14ff6b'])
+                    ->labels($data->map(function ($item) {
+                        return $item->trimestre->nombre . ' ' .
+                            $item->fecha->year;
+                        }))
+                    ->plotBandsFrom(0)
+                    ->plotBandsTo(0)
+                    ->dataset('Saldo Inicial', $data->pluck('saldo_inicial'))
+                    ->dataset('Saldo Final',  $data->pluck('saldo_final'));
             }
             else {
                 return view('graficos.index', [
@@ -97,7 +114,76 @@ class GraficoController extends Controller
             ]);
 
         }
-        else {
+        else if ($request->exists(['grafico', 'seccional', 'trimestreDesde', 'añoDesde']))
+        {
+            if ($request->input('grafico') == "gastosTrimestre") {
+                $reportes = ReporteEgresoCategoria::whereHas('reporteEgreso.reporteTrimestral', function($q) use ($request) {
+                    $q->where('seccional_id', $request->input('seccional'))
+                        ->where('trimestre_id', $request->input('trimestreDesde'))
+                        ->whereYear('fecha', $request->input('añoDesde'));
+                    })
+                    ->with('categoriaGasto')
+                    ->get();
+
+                $data1 = array();
+                foreach ($reportes as $item) {
+                    $data1[0][] = $item->categoriaGasto->nombre;
+                    $data1[1][] = $item->totalSeccional();
+                }
+
+                $data2 = array();
+                foreach ($reportes as $item) {
+                    $data2[0][] = $item->categoriaGasto->nombre;
+                    $data2[1][] = $item->totalCentral();
+                }
+
+                $data3 = array(array('UDA Seccional', 'UDA Central'), array(0,0));
+                foreach ($reportes as $item) {
+                    $data3[1][0] += $item->totalSeccional();
+                    $data3[1][1] += $item->totalCentral();
+                }
+
+                $chart = Charts::create('pie', 'highcharts')
+                    ->title('Categorias de Egresos por Seccional')
+                    ->colors(['#4572a7', '#aa4643', '#387424'])
+                    ->labels($data1[0])
+                    ->values($data1[1])
+                    ->dimensions(1000,500)
+                    ->responsive(true);
+
+                $chart2 = Charts::create('pie', 'highcharts')
+                    ->title('Categorías de Egresos por UDA Central')
+                    ->colors(['#4572a7', '#aa4643', '#387424'])
+                    ->labels($data2[0])
+                    ->values($data2[1])
+                    ->dimensions(1000,500)
+                    ->responsive(true);
+
+                $chart3 = Charts::create('pie', 'highcharts')
+                    ->title('Egresos de Seccional y UDA Central')
+                    ->colors(['#4572a7', '#aa4643', '#387424'])
+                    ->labels($data3[0])
+                    ->values($data3[1])
+                    ->dimensions(1000,500)
+                    ->responsive(true);
+            }
+            else {
+                return view('graficos.index', [
+                    'seccionales' => Seccional::orderBy('id', 'desc')->get(),
+                    'trimestres' => Trimestre::all()
+                ]);
+            }
+
+            return view('graficos.index', [
+                'chart' => $chart,
+                'chart2' => $chart2,
+                'chart3' => $chart3,
+                'seccionales' => Seccional::orderBy('id', 'desc')->get(),
+                'trimestres' => Trimestre::all()
+            ]);
+
+        } else {
+
             return view('graficos.index', [
                 'seccionales' => Seccional::orderBy('id', 'desc')->get(),
                 'trimestres' => Trimestre::all()
