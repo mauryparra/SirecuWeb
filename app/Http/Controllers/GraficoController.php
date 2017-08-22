@@ -53,8 +53,6 @@ class GraficoController extends Controller
                         return $item->trimestre->nombre . ' ' .
                             $item->fecha->year;
                         }))
-                    ->plotBandsFrom(0)
-                    ->plotBandsTo(0)
                     ->dataset('Ingresos', $data->pluck('ingresos'))
                     ->dataset('Egresos',  $data->pluck('egresos'));
 
@@ -72,14 +70,39 @@ class GraficoController extends Controller
                     ->labels($data->map(function ($item) {
                         return $item->mes->format('F - y');
                         }))
-                    ->plotBandsFrom(0)
-                    ->plotBandsTo(0)
                     ->dataset('Ingresos Provinciales', $data->pluck('ingresos_provincial'))
                     ->dataset('Ingresos Central',  $data->pluck('ingresos_central'))
                     ->dataset('Ingresos Otros',  $data->pluck('ingresos_otros'));
             }
             elseif ($request->input('grafico') == "gastos") {
-                // TODO
+
+                $reportes = ReporteEgresoCategoria::whereHas('reporteEgreso.reporteTrimestral', function($q) use ($request, $fechaDesde, $fechaHasta) {
+                    $q->where('seccional_id', $request->input('seccional'))
+                        ->where('fecha', '>=', $fechaDesde)
+                        ->where('fecha', '<=', $fechaHasta);
+                    })
+                    ->with('categoriaGasto', 'reporteEgreso.reporteTrimestral.trimestre')
+                    ->get();
+
+                $labels = [];
+                $data = array();
+
+                foreach ($reportes as $reporte) {
+                    $labels[$reporte->reporte_egreso_id] = $reporte->reporteEgreso->reporteTrimestral->trimestre->nombre . ' / ' . $reporte->reporteEgreso->reporteTrimestral->fecha->year;
+
+                    $data[$reporte->categoriaGasto->nombre][$reporte->reporte_egreso_id] = $reporte->totalSeccional() + $reporte->totalCentral();
+                }
+
+
+                $chart = Charts::multi('line', 'highcharts')
+                    ->title('Fuentes de Egresos')
+                    ->colors(['#4572a7', '#aa4643', '#14ff6b'])
+                    ->labels($labels);
+
+                foreach ($data as $key => $value) {
+                    $chart->dataset($key, $value);
+                }
+
             }
             elseif ($request->input('grafico') == "saldos") {
                 $data = ReporteTrimestral::where('seccional_id', $request->input('seccional'))
@@ -95,8 +118,6 @@ class GraficoController extends Controller
                         return $item->trimestre->nombre . ' ' .
                             $item->fecha->year;
                         }))
-                    ->plotBandsFrom(0)
-                    ->plotBandsTo(0)
                     ->dataset('Saldo Inicial', $data->pluck('saldo_inicial'))
                     ->dataset('Saldo Final',  $data->pluck('saldo_final'));
             }

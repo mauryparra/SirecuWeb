@@ -46,8 +46,6 @@ class DashboardController extends Controller
                 return $item->trimestre->nombre . ' ' .
                     $item->fecha->year;
                 }))
-            ->plotBandsFrom(0)
-            ->plotBandsTo(0)
             ->dataset('Ingresos', $reporteT->pluck('ingresos'))
             ->dataset('Egresos',  $reporteT->pluck('egresos'));
 

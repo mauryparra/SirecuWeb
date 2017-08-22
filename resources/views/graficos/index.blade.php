@@ -12,17 +12,17 @@
 
                 <div class="panel-body">
                     @if ( ! empty($chart))
-                        {!! $chart->render() !!}
+                        {!! $chart->html() !!}
                     @else
                         Seleccionar las opciones para graficar.
                     @endif
 
                     @if ( ! empty($chart2))
-                        {!! $chart2->render() !!}
+                        {!! $chart2->html() !!}
                     @endif
 
                     @if ( ! empty($chart3))
-                        {!! $chart3->render() !!}
+                        {!! $chart3->html() !!}
                     @endif
                 </div>
             </div>
@@ -50,4 +50,16 @@
         }).change();
     });
     </script>
+    {!! Charts::scripts(['highcharts']) !!}
+    @if ( ! empty($chart))
+        {!! $chart->script() !!}
+    @endif
+
+    @if ( ! empty($chart2))
+        {!! $chart2->script() !!}
+    @endif
+
+    @if ( ! empty($chart3))
+        {!! $chart3->script() !!}
+    @endif
 @endsection

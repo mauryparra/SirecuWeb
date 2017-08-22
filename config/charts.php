@@ -30,9 +30,6 @@ return [
             'duration' => 500, // In milliseconds.
             'color' => '#000000', // Determines the default loader color.
         ],
-        'plotBandsFrom' => 4.5, // Start of plot bands in Areaspline chart
-        'plotBandsTo' => 6.5, // End of plot bands in Areaspline chart
-        'plotBandsColor' => 'rgba(23,23,23,0.2)', // Background color for plot bands in Areaspline chart
     ],
 
     /*

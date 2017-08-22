@@ -8,7 +8,7 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                    {!! $chart->render() !!}
+                    {!! $chart->html() !!}
                 </div>
             </div>
 
@@ -64,4 +64,9 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('js-scripts')
+    {!! Charts::scripts(['highcharts']) !!}
+    {!! $chart->script() !!}
 @endsection
