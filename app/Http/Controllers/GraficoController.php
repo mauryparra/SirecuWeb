@@ -90,13 +90,13 @@ class GraficoController extends Controller
                 foreach ($reportes as $reporte) {
                     $labels[$reporte->reporte_egreso_id] = $reporte->reporteEgreso->reporteTrimestral->trimestre->nombre . ' / ' . $reporte->reporteEgreso->reporteTrimestral->fecha->year;
 
-                    $data[$reporte->categoriaGasto->nombre][$reporte->reporte_egreso_id] = $reporte->totalSeccional() + $reporte->totalCentral();
+                    $data[$reporte->categoriaGasto->nombre][$reporte->reporte_egreso_id] = $reporte->totalCategoria();
                 }
 
 
                 $chart = Charts::multi('line', 'highcharts')
                     ->title('Fuentes de Egresos')
-                    ->colors(['#4572a7', '#aa4643', '#14ff6b'])
+                    ->colors(['#C0392B', '#9B59B6', '#2980B9', '#1ABC9C', '#16A085', '#2ECC71', '#F1C40F', '#F39C12', '#34495E'])
                     ->labels($labels);
 
                 foreach ($data as $key => $value) {
@@ -166,7 +166,7 @@ class GraficoController extends Controller
 
                 $chart = Charts::create('pie', 'highcharts')
                     ->title('Categorias de Egresos por Seccional')
-                    ->colors(['#4572a7', '#aa4643', '#387424'])
+                    ->colors(['#C0392B', '#9B59B6', '#2980B9', '#1ABC9C', '#16A085', '#2ECC71', '#F1C40F', '#F39C12', '#34495E'])
                     ->labels($data1[0])
                     ->values($data1[1])
                     ->dimensions(1000,500)
@@ -174,7 +174,7 @@ class GraficoController extends Controller
 
                 $chart2 = Charts::create('pie', 'highcharts')
                     ->title('Categorías de Egresos por UDA Central')
-                    ->colors(['#4572a7', '#aa4643', '#387424'])
+                    ->colors(['#C0392B', '#9B59B6', '#2980B9', '#1ABC9C', '#16A085', '#2ECC71', '#F1C40F', '#F39C12', '#34495E'])
                     ->labels($data2[0])
                     ->values($data2[1])
                     ->dimensions(1000,500)
