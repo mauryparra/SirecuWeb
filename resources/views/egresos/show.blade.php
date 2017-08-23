@@ -52,7 +52,7 @@
                                         <td>${{ $reporte->total_mes_1 }}</td>
                                         <td>${{ $reporte->total_mes_2 }}</td>
                                         <td>${{ $reporte->total_mes_3 }}</td>
-                                        <td></td>
+                                        <td>${{ $reporte->totalSeccional() }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -109,7 +109,7 @@
                                         <td>${{ $reporte->total_mes_1_central }}</td>
                                         <td>${{ $reporte->total_mes_2_central }}</td>
                                         <td>${{ $reporte->total_mes_3_central }}</td>
-                                        <td></td>
+                                        <td>${{ $reporte->totalCentral() }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>

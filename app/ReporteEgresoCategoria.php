@@ -65,4 +65,12 @@ class ReporteEgresoCategoria extends Model
     {
         return $this->total_mes_1_central + $this->total_mes_2_central + $this->total_mes_3_central;
     }
+
+    /**
+     * Obtiene el total de egresos por categoria de la central
+     */
+    public function totalCategoria()
+    {
+        return $this->totalCentral() + $this->totalSeccional();
+    }
 }
