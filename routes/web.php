@@ -14,3 +14,18 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+
+Route::get('/reportes', 'ReporteTrimestralController@index')->name('reportes.index');
+Route::get('/reportes/{reporteT}', 'ReporteTrimestralController@show')->name('reportes.show');
+
+Route::get('/ingresos', 'ReporteIngresoController@index')->name('ingresos.index');
+Route::get('/ingresos/{reporteIngreso}', 'ReporteIngresoController@show')->name('ingresos.show');
+
+Route::get('/egresos', 'ReporteEgresoController@index')->name('egresos.index');
+Route::get('/egresos/{reporteEgreso}', 'ReporteEgresoController@show')->name('egresos.show');
+
+Route::get('/graficos', 'GraficoController@index')->name('graficos.index');
