@@ -41,4 +41,15 @@ class ReporteIngresoMensual extends Model
     {
         return $this->belongsTo('App\ReporteIngreso', 'reporte_ingreso_id');
     }
+
+    public static function getIngresos($seccional, $fechaDesde, $fechaHasta)
+    {
+        return self::whereHas('reporteIngreso.reporteTrimestral', function ($q) use ($seccional, $fechaDesde, $fechaHasta) {
+                $q->where('seccional_id', $seccional)
+                    ->where('fecha', '>=', $fechaDesde)
+                    ->where('fecha', '<=', $fechaHasta);
+                })
+            ->with('reporteIngreso.reporteTrimestral.seccional')
+            ->get();
+    }
 }

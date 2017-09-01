@@ -12,7 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    @if ( ! empty($chart))
+    @if ( ! empty($charts))
         {!! Charts::styles(['highcharts']) !!}
     @endif
 </head>

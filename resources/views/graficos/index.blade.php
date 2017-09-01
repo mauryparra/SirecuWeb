@@ -11,18 +11,12 @@
                 <div class="panel-heading">Gráfico</div>
 
                 <div class="panel-body">
-                    @if ( ! empty($chart))
-                        {!! $chart->html() !!}
+                    @if ( ! empty($charts))
+                        @foreach ($charts as $chart)
+                            {!! $chart->html() !!}
+                        @endforeach
                     @else
                         Seleccionar las opciones para graficar.
-                    @endif
-
-                    @if ( ! empty($chart2))
-                        {!! $chart2->html() !!}
-                    @endif
-
-                    @if ( ! empty($chart3))
-                        {!! $chart3->html() !!}
                     @endif
                 </div>
             </div>
@@ -51,15 +45,9 @@
     });
     </script>
     {!! Charts::scripts(['highcharts']) !!}
-    @if ( ! empty($chart))
-        {!! $chart->script() !!}
-    @endif
-
-    @if ( ! empty($chart2))
-        {!! $chart2->script() !!}
-    @endif
-
-    @if ( ! empty($chart3))
-        {!! $chart3->script() !!}
+    @if ( ! empty($charts))
+        @foreach ($charts as $chart)
+            {!! $chart->script() !!}
+        @endforeach
     @endif
 @endsection

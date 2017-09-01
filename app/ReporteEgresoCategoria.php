@@ -73,4 +73,26 @@ class ReporteEgresoCategoria extends Model
     {
         return $this->totalCentral() + $this->totalSeccional();
     }
+
+    public static function getEgresosCategorias($seccional, $fechaDesde, $fechaHasta)
+    {
+        return self::whereHas('reporteEgreso.reporteTrimestral', function ($q) use ($seccional, $fechaDesde, $fechaHasta) {
+                $q->where('seccional_id', $seccional)
+                    ->where('fecha', '>=', $fechaDesde)
+                    ->where('fecha', '<=', $fechaHasta);
+                })
+            ->with('categoriaGasto', 'reporteEgreso.reporteTrimestral.trimestre')
+            ->get();
+    }
+
+    public static function getEgresosCategoria($seccional, $trimestre, $año)
+    {
+        return self::whereHas('reporteEgreso.reporteTrimestral', function ($q) use ($seccional, $trimestre, $año) {
+                $q->where('seccional_id', $seccional)
+                    ->where('trimestre_id', $trimestre)
+                    ->whereYear('fecha', $año);
+                })
+            ->with('categoriaGasto')
+            ->get();
+    }
 }
