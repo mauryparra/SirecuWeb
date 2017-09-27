@@ -39,17 +39,17 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                        <li><a href="{{ route('reportes.index') }}">Reportes</a></li>
-                        <li><a href="{{ route('graficos.index') }}">Gráficos</a></li>
+                        <li><a href="{{ route('dashboard') }}">@lang('Dashboard')</a></li>
+                        <li><a href="{{ route('reportes.index') }}">@lang('Reports')</a></li>
+                        <li><a href="{{ route('graficos.index') }}">@lang('Charts')</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @if (Auth::guest())
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
+                            <li><a href="{{ route('login') }}">@lang('Login')</a></li>
+                            <li><a href="{{ route('register') }}">@lang('Register')</a></li>
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -61,7 +61,7 @@
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            Logout
+                                            @lang('Logout')
                                         </a>
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
