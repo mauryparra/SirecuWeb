@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
+                <div class="panel-heading">@lang('Dashboard')</div>
 
                 <div class="panel-body">
                     {!! $chart->html() !!}
@@ -16,7 +16,7 @@
 
             <div class="panel panel-default">
                 <!-- Default panel contents -->
-                <div class="panel-heading">Reportes</div>
+                <div class="panel-heading">@lang('Reports')</div>
                 <div class="panel-body">
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut semper sollicitudin libero eget finibus. Curabitur massa leo, suscipit vel eros ac, porttitor viverra neque. Vestibulum feugiat mauris ut dignissim molestie.</p>
 

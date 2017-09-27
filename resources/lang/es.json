@@ -1,0 +1,17 @@
+{
+    "Login": "Iniciar Sesión",
+    "Register": "Registrarse",
+    "Logout": "Cerrar Sesión",
+    "Name": "Nombre",
+    "E-Mail Address": "Correo electrónico",
+    "Password": "Contraseña",
+    "Confirm Password": "Confirmar Contraseña",
+    "Remember Me": "Recordarme",
+    "Forgot Your Password?": "¿Olvidaste tu contraseña?",
+    "Reset Password": "Restablecer la contraseña",
+    "Send Password Reset Link": "Enviar enlace de restablecimiento de contraseña",
+
+    "Dashboard": "Inicio",
+    "Reports": "Reportes",
+    "Charts": "Gráficos"
+}

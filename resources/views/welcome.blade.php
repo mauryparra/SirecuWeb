@@ -71,8 +71,8 @@
                     @if (Auth::check())
                         <a href="{{ route('dashboard') }}">Dashboard</a>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
+                        <a href="{{ route('login') }}">@lang('Login')</a>
+                        <a href="{{ route('register') }}">@lang('Register')</a>
                     @endif
                 </div>
             @endif
