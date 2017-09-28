@@ -8,7 +8,7 @@
                 <!-- Default panel contents -->
                 <div class="panel-heading">Reportes Egresos</div>
                 <div class="panel-body">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut semper sollicitudin libero eget finibus. Curabitur massa leo, suscipit vel eros ac, porttitor viverra neque. Vestibulum feugiat mauris ut dignissim molestie.</p>
+                    <p>Detalles de Egresos Trimestrales</p>
 
                     <!-- Table -->
                     <div class="table-responsive">
@@ -32,6 +32,9 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        <div class="text-center">
+                            {{ $reportesEgresos->links() }}
+                        </div>
                     </div>
                     <!-- Table -->
                 </div>
