@@ -11,7 +11,7 @@
                 <!-- Default panel contents -->
                 <div class="panel-heading">Reportes Trimestrales</div>
                 <div class="panel-body">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut semper sollicitudin libero eget finibus. Curabitur massa leo, suscipit vel eros ac, porttitor viverra neque. Vestibulum feugiat mauris ut dignissim molestie.</p>
+                    <p>Reportes trimestrales cargados en la página ordenados del más reciente al más antiguo.</p>
 
                     <!-- Table -->
                     <div class="table-responsive">

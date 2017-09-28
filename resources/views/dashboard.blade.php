@@ -18,7 +18,7 @@
                 <!-- Default panel contents -->
                 <div class="panel-heading">@lang('Reports')</div>
                 <div class="panel-body">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut semper sollicitudin libero eget finibus. Curabitur massa leo, suscipit vel eros ac, porttitor viverra neque. Vestibulum feugiat mauris ut dignissim molestie.</p>
+                    <p>A continuación se encuentran los reportes cargados en la página ordenados del más reciente al más antiguo. La gráfica corresponde a los Ingresos / Egresos trimestrales para los reportes mostrados en la tabla.</p>
 
                     <!-- Table -->
                     <div class="table-responsive">

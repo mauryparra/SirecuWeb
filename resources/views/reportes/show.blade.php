@@ -9,7 +9,7 @@
                 <!-- Default panel contents -->
                 <div class="panel-heading">Reporte Trimestral</div>
                 <div class="panel-body">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut semper sollicitudin libero eget finibus. Curabitur massa leo, suscipit vel eros ac, porttitor viverra neque. Vestibulum feugiat mauris ut dignissim molestie.</p>
+                    <p>En la siguiente tabla se muestran los balances generales del reporte trimestral, utilizar los botones para ver los reportes de egresos e ingresos.</p>
 
                     <!-- Table -->
                     <div class="table-responsive">

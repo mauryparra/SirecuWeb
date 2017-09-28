@@ -8,7 +8,7 @@
                 <!-- Default panel contents -->
                 <div class="panel-heading">Reporte de Egresos Seccional</div>
                 <div class="panel-body">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut semper sollicitudin libero eget finibus. Curabitur massa leo, suscipit vel eros ac, porttitor viverra neque. Vestibulum feugiat mauris ut dignissim molestie.</p>
+                    <p>Egresos durante el trimestre por cuenta de la seccional y detalle mensual de gastos por categorias.</p>
 
                     <!-- Table -->
                     <div class="table-responsive">
@@ -66,6 +66,7 @@
                 <!-- Default panel contents -->
                 <div class="panel-heading">Reporte de Egresos por UDA Central</div>
                 <div class="panel-body">
+                    <p>Egresos durante el trimestre por cuenta de UDA Central y detalle mensual de gastos por categorias.</p>
 
                     <!-- Table -->
                     <div class="table-responsive">
