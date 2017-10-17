@@ -24,7 +24,7 @@ class GraficoPresenter
 
         switch ($parameters['grafico']) {
             case "ingreso/egreso":
-                $data = ReporteTrimestral::getIngresosEgresos($parameters['seccional'], $fechaDesde, $fechaHasta);
+                $data = ReporteTrimestral::getReportes($parameters['seccional'], $fechaDesde, $fechaHasta);
 
                 if ( count($data) == 0 )
                     break;
@@ -132,7 +132,7 @@ class GraficoPresenter
                 return $charts;
 
             case "saldos":
-                $data = ReporteTrimestral::getSaldos($parameters['seccional'], $fechaDesde, $fechaHasta);
+                $data = ReporteTrimestral::getReportes($parameters['seccional'], $fechaDesde, $fechaHasta);
 
                 if ( count($data) == 0 )
                     break;
