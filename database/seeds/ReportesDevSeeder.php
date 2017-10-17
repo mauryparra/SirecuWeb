@@ -53,7 +53,31 @@ class ReportesDevSeeder extends Seeder
 
         // Reportes Ingresos Mensuales
         foreach (App\ReporteIngreso::all() as $reporteI) {
-            for ($mes=1; $mes < 4; $mes++) {
+            switch ($reporteI->reporteTrimestral->trimestre->id) {
+                case '1':
+                    $mes = 1;
+                    $hasta = 4;
+                    continue;
+
+                case '2':
+                    $mes = 4;
+                    $hasta = 7;
+                    continue;
+
+                case '3':
+                    $mes = 7;
+                    $hasta = 10;
+                    continue;
+
+                case '4':
+                    $mes = 10;
+                    $hasta = 13;
+                    continue;
+
+                default:
+                    break;
+            }
+            for ($mes; $mes < $hasta; $mes++) {
                 DB::table('reportes_ingresos_mensuales')->insert([
                     'reporte_ingreso_id' => $reporteI->id,
                     'mes' => $reporteI->reporteTrimestral->fecha->year . '-' . $mes . '-01',
