@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <!-- Default panel contents -->
-                <div class="panel-heading">Reporte de Egresos Seccional</div>
+                <div class="panel-heading">Informe de Egresos Seccional</div>
                 <div class="panel-body">
                     <p>Egresos durante el trimestre por cuenta de la seccional y detalle mensual de gastos por categorias.</p>
 
@@ -15,7 +15,7 @@
                         <table class="table table-hover table-bordered">
                             <thead class="text-center">
                                 <tr>
-                                    <th>Reporte Trimestral</th>
+                                    <th>Informe Trimestral</th>
                                     <th>Seccional</th>
                                     <th>Total</th>
                                 </tr>
@@ -64,7 +64,7 @@
 
             <div class="panel panel-default">
                 <!-- Default panel contents -->
-                <div class="panel-heading">Reporte de Egresos por UDA Central</div>
+                <div class="panel-heading">Informe de Egresos por UDA Central</div>
                 <div class="panel-body">
                     <p>Egresos durante el trimestre por cuenta de UDA Central y detalle mensual de gastos por categorias.</p>
 
@@ -73,7 +73,7 @@
                         <table class="table table-hover table-bordered">
                             <thead class="text-center">
                                 <tr>
-                                    <th>Reporte Trimestral</th>
+                                    <th>Informe Trimestral</th>
                                     <th>Seccional</th>
                                     <th>Total</th>
                                 </tr>

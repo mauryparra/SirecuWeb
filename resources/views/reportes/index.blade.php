@@ -9,9 +9,9 @@
 
             <div class="panel panel-default">
                 <!-- Default panel contents -->
-                <div class="panel-heading">Reportes Trimestrales</div>
+                <div class="panel-heading">Informes Trimestrales</div>
                 <div class="panel-body">
-                    <p>Reportes trimestrales cargados en la página ordenados del más reciente al más antiguo.</p>
+                    <p>Informes trimestrales cargados en la página ordenados del más reciente al más antiguo.</p>
 
                     <!-- Table -->
                     <div class="table-responsive">

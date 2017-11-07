@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <!-- Default panel contents -->
-                <div class="panel-heading">Reportes Egresos</div>
+                <div class="panel-heading">Informes Egresos</div>
                 <div class="panel-body">
                     <p>Detalles de Egresos Trimestrales</p>
 
@@ -15,7 +15,7 @@
                         <table class="table table-hover table-bordered">
                             <thead class="text-center">
                                 <tr>
-                                    <th>Reporte Trimestral</th>
+                                    <th>Informe Trimestral</th>
                                     <th>Total</th>
                                     <th>Total por UDA Central</th>
                                     <th>Egresos Por Categorias</th>

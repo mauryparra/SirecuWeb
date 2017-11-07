@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <!-- Default panel contents -->
-                <div class="panel-heading">Reportes Ingresos</div>
+                <div class="panel-heading">Informes Ingresos</div>
                 <div class="panel-body">
                     <p>Fuentes de Ingresos durante el trimestre</p>
 
@@ -15,7 +15,7 @@
                         <table class="table table-hover table-bordered">
                             <thead class="text-center">
                                 <tr>
-                                    <th>Reporte Trimestral</th>
+                                    <th>Informe Trimestral</th>
                                     <th>Total Provincial</th>
                                     <th>Coparticipación</th>
                                     <th>Total General</th>
