@@ -37,6 +37,7 @@ class ReportesDevSeeder extends Seeder
                     'ingresos' => rand(50, 300),
                     'egresos' => rand(50, 300),
                     'saldo_final' => rand(50, 300),
+                    'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 ]);
             }
         }
@@ -48,6 +49,7 @@ class ReportesDevSeeder extends Seeder
                 'total_provincial' => rand(50, 300),
                 'coparticipacion' => rand(50, 300),
                 'total_general' => rand(50, 300),
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             ]);
         }
 
@@ -84,6 +86,7 @@ class ReportesDevSeeder extends Seeder
                     'ingresos_provincial' => rand(50, 300),
                     'ingresos_otros' => rand(50, 300),
                     'ingresos_central' => rand(50, 300),
+                    'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 ]);
             }
         }
@@ -94,6 +97,7 @@ class ReportesDevSeeder extends Seeder
                 'reporte_trimestral_id' => $reporteT->id,
                 'total' => rand(120, 980),
                 'total_central' => rand(120, 980),
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             ]);
         }
 
@@ -109,6 +113,7 @@ class ReportesDevSeeder extends Seeder
                     'total_mes_1_central' => rand(100, 500),
                     'total_mes_2_central' => rand(100, 500),
                     'total_mes_3_central' => rand(100, 500),
+                    'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 ]);
             }
         }
