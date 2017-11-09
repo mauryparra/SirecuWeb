@@ -20,7 +20,7 @@ class CreateReportesEgresosTable extends Migration
             $table->decimal('total_central', 11, 2);
             $table->timestamps();
 
-            $table->foreign('reporte_trimestral_id')->references('id')->on('reportes_trimestrales');
+            $table->foreign('reporte_trimestral_id')->references('id')->on('reportes_trimestrales')->onDelete('cascade');
             $table->unique('reporte_trimestral_id');
         });
     }
