@@ -21,6 +21,7 @@ Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
 Route::get('/reportes', 'ReporteTrimestralController@index')->name('reportes.index');
 Route::get('/reportes/{reporteT}', 'ReporteTrimestralController@show')->name('reportes.show');
+Route::delete('/reportes/{reporteT}', 'ReporteTrimestralController@destroy')->name('reportes.destroy')->middleware('can:delete,reporteT');
 
 Route::get('/ingresos', 'ReporteIngresoController@index')->name('ingresos.index');
 Route::get('/ingresos/{reporteIngreso}', 'ReporteIngresoController@show')->name('ingresos.show');

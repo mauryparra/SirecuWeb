@@ -100,11 +100,12 @@ class ReporteTrimestralController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\ReporteTrimestral  $reporteT
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(ReporteTrimestral $reporteT)
     {
-        //
+        $reporteT->delete();
+        return redirect(route('reportes.index'));
     }
 }
