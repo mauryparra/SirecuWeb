@@ -38,11 +38,16 @@
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        <li><a href="{{ route('dashboard') }}">@lang('Dashboard')</a></li>
-                        <li><a href="{{ route('reportes.index') }}">@lang('Reports')</a></li>
-                        <li><a href="{{ route('graficos.index') }}">@lang('Charts')</a></li>
-                    </ul>
+                    @if (Auth::check())
+                        <ul class="nav navbar-nav">
+                            <li><a href="{{ route('dashboard') }}">@lang('Dashboard')</a></li>
+                            <li><a href="{{ route('reportes.index') }}">@lang('Reports')</a></li>
+                            <li><a href="{{ route('graficos.index') }}">@lang('Charts')</a></li>
+                            @if (Auth::user()->hasRole('admin'))
+                                <li><a href="{{ route('usuarios.index') }}">@lang('Users')</a></li>
+                            @endif
+                        </ul>
+                    @endif
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">

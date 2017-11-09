@@ -11,7 +11,11 @@
     "Reset Password": "Restablecer la contraseña",
     "Send Password Reset Link": "Enviar enlace de restablecimiento de contraseña",
 
+    "This action is unauthorized.": "Esta acción no esta autorizada",
+
+
     "Dashboard": "Inicio",
     "Reports": "Informes",
-    "Charts": "Gráficos"
+    "Charts": "Gráficos",
+    "Users": "Usuarios"
 }
