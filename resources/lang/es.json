@@ -1,17 +1,22 @@
 {
     "Login": "Iniciar Sesión",
     "Register": "Registrarse",
+    "Add User": "Añadir Usuario",
     "Logout": "Cerrar Sesión",
     "Name": "Nombre",
     "E-Mail Address": "Correo electrónico",
     "Password": "Contraseña",
     "Confirm Password": "Confirmar Contraseña",
+    "Roles": "Roles",
     "Remember Me": "Recordarme",
     "Forgot Your Password?": "¿Olvidaste tu contraseña?",
     "Reset Password": "Restablecer la contraseña",
     "Send Password Reset Link": "Enviar enlace de restablecimiento de contraseña",
 
     "This action is unauthorized.": "Esta acción no esta autorizada",
+
+    "Edit": "Editar",
+    "Delete": "Eliminar",
 
 
     "Dashboard": "Inicio",

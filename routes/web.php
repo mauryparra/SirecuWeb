@@ -32,4 +32,6 @@ Route::get('/egresos/{reporteEgreso}', 'ReporteEgresoController@show')->name('eg
 Route::get('/graficos', 'GraficoController@index')->name('graficos.index');
 
 Route::get('/usuarios', 'UserController@index')->name('usuarios.index')->middleware('can:index,App\User');
+Route::get('/usuarios/create', 'UserController@create')->name('usuarios.create')->middleware('can:create,App\User');
+Route::post('/usuarios', 'UserController@store')->name('usuarios.store')->middleware('can:create,App\User');
 Route::delete('/usuarios/{usuario}', 'UserController@destroy')->name('usuarios.destroy')->middleware('can:delete,usuario');

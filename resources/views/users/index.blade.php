@@ -12,7 +12,10 @@
                     <p>Lista de Usuarios Registrados en SireCu Web</p>
 
                     <!-- Table -->
-                    <div class="table-responsive">
+                    <div class="panel panel-default table-responsive">
+                        <div class="panel-heading text-right">
+                            <a href="{{ route('usuarios.create') }}" class="btn btn-default btn-sm">@lang('Add User')</a>
+                        </div>
                         <table class="table table-hover table-bordered">
                             <thead class="text-center">
                                 <tr>
@@ -28,11 +31,13 @@
                                         <th scope="row">{{ $user->name }}</th>
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->roles->implode('name', ', ') }}</td>
-                                        <td><form action="/usuarios/{{ $user->id }}" method="post">
+                                        <td>
+                                            <a href="/usuarios/{{ $user->id }}/edit" class="btn btn-default btn-sm">@lang('Edit')</a>
+                                            <form style="display: inline" action="/usuarios/{{ $user->id }}" method="post">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
 
-                                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                                            <button type="submit" class="btn btn-danger btn-sm">@lang('Delete')</button>
                                         </form></td>
                                     </tr>
                                 @endforeach
