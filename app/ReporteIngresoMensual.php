@@ -50,6 +50,7 @@ class ReporteIngresoMensual extends Model
                     ->where('fecha', '<=', $fechaHasta);
                 })
             ->with('reporteIngreso.reporteTrimestral.seccional')
+            ->orderBy('mes', 'asc')
             ->get();
     }
 }

@@ -36,6 +36,7 @@ class DashboardController extends Controller
         else {
             $reporteT = ReporteTrimestral::latest()
                 ->with('trimestre', 'seccional', 'ingreso', 'egreso')
+                ->orderBy('fecha', 'desc')
                 ->paginate(6);
         }
 

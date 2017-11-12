@@ -77,25 +77,17 @@ class ReporteTrimestral extends Model
     public function scopeSearch($query, $parameters)
     {
         return $query->where('trimestre_id', $parameters['trimestre'])
-            ->where('fecha', 'LIKE', $parameters['año'].'-%') // TODO Check
+            ->where('fecha', 'LIKE', $parameters['año'].'-%')
             ->where('seccional_id', $parameters['seccional']);
     }
 
-    public static function getIngresosEgresos($seccional, $fechaDesde, $fechaHasta)
+    public static function getReportes($seccional, $fechaDesde, $fechaHasta)
     {
         return self::where('seccional_id', $seccional)
             ->where('fecha', '>=', $fechaDesde)
             ->where('fecha', '<=', $fechaHasta)
             ->with('trimestre', 'seccional')
-            ->get();
-    }
-
-    public static function getSaldos($seccional, $fechaDesde, $fechaHasta)
-    {
-        return self::where('seccional_id', $seccional)
-            ->where('fecha', '>=', $fechaDesde)
-            ->where('fecha', '<=', $fechaHasta)
-            ->with('trimestre', 'seccional')
+            ->orderBy('fecha', 'asc')
             ->get();
     }
 }

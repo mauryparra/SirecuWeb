@@ -22,7 +22,7 @@ class CreateReportesIngresosMensualesTable extends Migration
             $table->decimal('ingresos_central', 11, 2);
             $table->timestamps();
 
-            $table->foreign('reporte_ingreso_id')->references('id')->on('reportes_ingresos');
+            $table->foreign('reporte_ingreso_id')->references('id')->on('reportes_ingresos')->onDelete('cascade');
             $table->unique(['reporte_ingreso_id', 'mes']);
         });
     }

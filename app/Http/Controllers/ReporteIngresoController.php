@@ -26,6 +26,7 @@ class ReporteIngresoController extends Controller
     {
         $reportesIngresos = ReporteIngreso::latest()
             ->with('reporteTrimestral.trimestre', 'reporteTrimestral.seccional')
+            ->orderBy('created_at', 'desc')
             ->paginate(6);
 
         return view('ingresos.index', compact('reportesIngresos'));

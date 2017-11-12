@@ -7,9 +7,9 @@
 
             <div class="panel panel-default">
                 <!-- Default panel contents -->
-                <div class="panel-heading">Reporte Trimestral</div>
+                <div class="panel-heading">Informe Trimestral</div>
                 <div class="panel-body">
-                    <p>En la siguiente tabla se muestran los balances generales del reporte trimestral, utilizar los botones para ver los reportes de egresos e ingresos.</p>
+                    <p>En la siguiente tabla se muestran los balances generales del informe trimestral, utilizar los botones para ver los informes de egresos e ingresos.</p>
 
                     <!-- Table -->
                     <div class="table-responsive">
@@ -36,8 +36,8 @@
                                     <td>${{ $reporteT->ingresos }}</td>
                                     <td>${{ $reporteT->egresos }}</td>
                                     <td>${{ $reporteT->saldo_final }}</td>
-                                    <td><a class="btn btn-default btn-sm" href="{{ $reporteT->ingreso->path() }}">Ver Reporte</a></td>
-                                    <td><a class="btn btn-default btn-sm" href="{{ $reporteT->egreso->path() }}">Ver Reporte</a></td>
+                                    <td><a class="btn btn-default btn-sm" href="{{ $reporteT->ingreso->path() }}">Ver Informe</a></td>
+                                    <td><a class="btn btn-default btn-sm" href="{{ $reporteT->egreso->path() }}">Ver Informe</a></td>
                                 </tr>
                             </tbody>
                         </table>

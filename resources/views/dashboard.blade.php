@@ -18,7 +18,7 @@
                 <!-- Default panel contents -->
                 <div class="panel-heading">@lang('Reports')</div>
                 <div class="panel-body">
-                    <p>A continuación se encuentran los reportes cargados en la página ordenados del más reciente al más antiguo. La gráfica corresponde a los Ingresos / Egresos trimestrales para los reportes mostrados en la tabla.</p>
+                    <p>A continuación se encuentran los informes cargados en la página ordenados del más reciente al más antiguo. La gráfica corresponde a los Ingresos / Egresos trimestrales para los informes mostrados en la tabla.</p>
 
                     <!-- Table -->
                     <div class="table-responsive">
@@ -47,9 +47,9 @@
                                         <td>${{ $reporte->ingresos }}</td>
                                         <td>${{ $reporte->egresos }}</td>
                                         <td>${{ $reporte->saldo_final }}</td>
-                                        <td><a class="btn btn-default btn-sm" href="{{ $reporte->path() }}">Ver Reporte</a></td>
-                                        <td><a class="btn btn-default btn-sm" href="{{ $reporte->ingreso->path() }}">Ver Reporte</a></td>
-                                        <td><a class="btn btn-default btn-sm" href="{{ $reporte->egreso->path() }}">Ver Reporte</a></td>
+                                        <td><a class="btn btn-default btn-sm" href="{{ $reporte->path() }}">Ver Informe</a></td>
+                                        <td><a class="btn btn-default btn-sm" href="{{ $reporte->ingreso->path() }}">Ver Informe</a></td>
+                                        <td><a class="btn btn-default btn-sm" href="{{ $reporte->egreso->path() }}">Ver Informe</a></td>
                                     </tr>
                                 @endforeach
                             </tbody>
