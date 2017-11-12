@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
@@ -81,24 +82,39 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\User  $user
+     * @param  \App\User  $userEdit
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(User $userEdit)
     {
-        //
+        return view('users.edit', compact('userEdit'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\User  $user
+     * @param  \App\User  $userEdit
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, User $userEdit)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|max:255',
+            'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($userEdit->email, 'email')],
+            'password' => 'sometimes|nullable|min:6|confirmed',
+            'roles' => 'required',
+        ]);
+
+        $userEdit->name = $request->get('name');
+        $userEdit->email = $request->get('email');
+        $request->get('password') ? $userEdit->password = bcrypt($request->get('password')) : '';
+
+        $userEdit->assignRoles(array_keys($request->get('roles')));
+
+        $userEdit->save();
+
+        return redirect(route('usuarios.index'));
     }
 
     /**

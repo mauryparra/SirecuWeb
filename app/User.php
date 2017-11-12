@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Role;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -27,6 +28,10 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    protected $with = [
+        'roles',
+    ];
+
     public function roles()
     {
       return $this->belongsToMany(Role::class);
@@ -46,19 +51,21 @@ class User extends Authenticatable
     {
         if ($this->hasRole($role))
         {
-            foreach ($this->roles as $rol ) {
-                echo '<br>' . $rol->name;
-            }
-            echo "Quita Rol -> " . Role::where('name', $role)->first()->name;
             return $this->roles()->detach(Role::where('name', $role)->first());
         }
         else
         {
-            foreach ($this->roles as $rol ) {
-                echo '<br>' . $rol->name;
-            }
-            echo "Agrega Rol -> " . Role::where('name', $role)->first()->name;
             return $this->roles()->attach(Role::where('name', $role)->first());
+        }
+    }
+
+    public function assignRoles($roles)
+    {
+        foreach (Role::all() as $rol) {
+            if ($this->hasRole($rol->name) != in_array($rol->name, $roles))
+            {
+                $this->toggleRole($rol->name);
+            }
         }
     }
 }
