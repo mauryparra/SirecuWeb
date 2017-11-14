@@ -62,6 +62,9 @@
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
+                                    <li class="{{ Route::currentRouteName() == 'usuarios.edit' ? "active" : "" }}">
+                                        <a href="{{ route('usuarios.edit', Auth::user()->id) }}">@lang('Edit Profile')</a>
+                                    </li>
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();

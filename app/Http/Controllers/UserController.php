@@ -99,22 +99,39 @@ class UserController extends Controller
      */
     public function update(Request $request, User $userEdit)
     {
+        if (auth()->user()->hasRole('admin'))
+        {
+            $this->validate($request, [
+                'name' => 'required|max:255',
+                'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($userEdit->email, 'email')],
+                'password' => 'sometimes|nullable|min:6|confirmed',
+                'roles' => 'required',
+            ]);
+
+            $userEdit->name = $request->get('name');
+            $userEdit->email = $request->get('email');
+            $request->get('password') ? $userEdit->password = bcrypt($request->get('password')) : '';
+
+            $userEdit->assignRoles(array_keys($request->get('roles')));
+
+            $userEdit->save();
+
+            return redirect(route('usuarios.index'));
+        }
+
         $this->validate($request, [
             'name' => 'required|max:255',
             'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($userEdit->email, 'email')],
             'password' => 'sometimes|nullable|min:6|confirmed',
-            'roles' => 'required',
         ]);
 
         $userEdit->name = $request->get('name');
         $userEdit->email = $request->get('email');
         $request->get('password') ? $userEdit->password = bcrypt($request->get('password')) : '';
 
-        $userEdit->assignRoles(array_keys($request->get('roles')));
-
         $userEdit->save();
 
-        return redirect(route('usuarios.index'));
+        return redirect(route('usuarios.edit', auth()->user()->id));
     }
 
     /**

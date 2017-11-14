@@ -3,6 +3,7 @@
     "Register": "Registrarse",
     "Add User": "Añadir Usuario",
     "Edit User": "Editar Usuario",
+    "Edit Profile": "Editar Perfil",
     "Logout": "Cerrar Sesión",
     "Name": "Nombre",
     "E-Mail Address": "Correo electrónico",
@@ -16,6 +17,7 @@
     "Send Password Reset Link": "Enviar enlace de restablecimiento de contraseña",
 
     "This action is unauthorized.": "Esta acción no esta autorizada",
+    "Only admins can assign roles": "Únicamente administradores pueden asignar roles",
 
     "Edit": "Editar",
     "Delete": "Eliminar",
