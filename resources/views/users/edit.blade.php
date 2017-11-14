@@ -15,7 +15,7 @@
                             <label for="name" class="col-md-4 control-label">@lang('Name')</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('email', $userEdit->name) }}" required autofocus>
+                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name', $userEdit->name) }}" required autofocus>
 
                                 @if ($errors->has('name'))
                                     <span class="help-block">
@@ -48,12 +48,18 @@
                                     <label class="checkbox-inline">
                                         <input type="checkbox" name="roles[{{ $rol->name }}]" value="{{ $rol->id }}"
                                         {{ $userEdit->hasRole($rol->name) ? ' checked' : '' }}
+                                        {{ ! auth()->user()->hasRole('admin') ? ' disabled' : '' }}
                                         @if (is_array(old('roles')))
                                             {{ in_array($rol->id, old('roles')) ? ' checked' : '' }}
                                         @endif
                                         > {{ $rol->name }}
                                     </label>
                                 @endforeach
+                                @if ( ! auth()->user()->hasRole('admin'))
+                                    <span class="help-block">
+                                        <strong>@lang("Only admins can assign roles")</strong>
+                                    </span>
+                                @endif
                                 @if ($errors->has('roles'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('roles') }}</strong>

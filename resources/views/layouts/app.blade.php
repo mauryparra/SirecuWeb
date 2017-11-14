@@ -40,11 +40,11 @@
                     <!-- Left Side Of Navbar -->
                     @if (Auth::check())
                         <ul class="nav navbar-nav">
-                            <li><a href="{{ route('dashboard') }}">@lang('Dashboard')</a></li>
-                            <li><a href="{{ route('reportes.index') }}">@lang('Reports')</a></li>
-                            <li><a href="{{ route('graficos.index') }}">@lang('Charts')</a></li>
+                            <li class="{{ Route::currentRouteName() == 'dashboard' ? "active" : "" }}"><a href="{{ route('dashboard') }}">@lang('Dashboard')</a></li>
+                            <li class="{{ Route::currentRouteName() == 'reportes.index' ? "active" : "" }}"><a href="{{ route('reportes.index') }}">@lang('Reports')</a></li>
+                            <li class="{{ Route::currentRouteName() == 'graficos.index' ? "active" : "" }}"><a href="{{ route('graficos.index') }}">@lang('Charts')</a></li>
                             @if (Auth::user()->hasRole('admin'))
-                                <li><a href="{{ route('usuarios.index') }}">@lang('Users')</a></li>
+                                <li class="{{ Route::currentRouteName() == 'usuarios.index' ? "active" : "" }}"><a href="{{ route('usuarios.index') }}">@lang('Users')</a></li>
                             @endif
                         </ul>
                     @endif
@@ -53,8 +53,8 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @if (Auth::guest())
-                            <li><a href="{{ route('login') }}">@lang('Login')</a></li>
-                            <li><a href="{{ route('register') }}">@lang('Register')</a></li>
+                            <li class="{{ Route::currentRouteName() == 'login' ? "active" : "" }}"><a href="{{ route('login') }}">@lang('Login')</a></li>
+                            <li class="{{ Route::currentRouteName() == 'register' ? "active" : "" }}"><a href="{{ route('register') }}">@lang('Register')</a></li>
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -62,6 +62,9 @@
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
+                                    <li class="{{ Route::currentRouteName() == 'usuarios.edit' ? "active" : "" }}">
+                                        <a href="{{ route('usuarios.edit', Auth::user()->id) }}">@lang('Edit Profile')</a>
+                                    </li>
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
